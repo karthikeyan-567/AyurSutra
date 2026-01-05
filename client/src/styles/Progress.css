@@ -1,0 +1,122 @@
+.progress-wrapper {
+  padding: 30px;
+  background: #f6fbf8;
+  min-height: 100vh;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.page-sub {
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+/* CARD */
+.progress-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* TASK PROGRESS */
+.task-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 50px;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+.progress-bar {
+  background: #e5e7eb;
+  height: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: #2f855a;
+  height: 100%;
+  border-radius: 999px;
+}
+
+/* BAR CHART */
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  height: 140px;
+  margin-top: 10px;
+}
+
+.bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.bar {
+  width: 26px;
+  background: #4ade80;
+  border-radius: 6px 6px 0 0;
+}
+
+.bar-item span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ATTENDANCE */
+.attendance-box {
+  display: flex;
+  gap: 20px;
+}
+
+.attended,
+.missed {
+  flex: 1;
+  padding: 18px;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.attended {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.missed {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.attended h4,
+.missed h4 {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .task-row {
+    grid-template-columns: 1fr;
+  }
+
+  .attendance-box {
+    flex-direction: column;
+  }
+}
