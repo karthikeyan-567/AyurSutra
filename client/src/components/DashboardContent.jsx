@@ -1,5 +1,5 @@
 import { User, FileText, CalendarDays } from "lucide-react";
-
+import TabletAlertWidget from "./TabletAlertWidget";
 export default function DashboardContent() {
   return (
     <section className="mt-20 ml-64 p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 bg-gray-50 min-h-screen">
@@ -58,7 +58,7 @@ export default function DashboardContent() {
             60%
           </div>
         </div>
-        <div className="text-center mt-3 text-xs text-gray-500">Donut Chart</div>
+        <div className="text-center mt-3 text-xs text-gray-500">Progerss Chart</div>
 
         {/* Calendar */}
         <h3 className="text-md font-semibold text-green-700 mt-6 mb-3">Schedule</h3>
@@ -76,7 +76,7 @@ export default function DashboardContent() {
       </CardWrapper>
 
       {/* 🔔 Reminder Widget */}
-      <CardWrapper className="bg-green-50 border-green-700/20">
+      {/* <CardWrapper className="bg-green-50 border-green-700/20">
         <div className="flex items-center gap-2 text-green-700 font-semibold mb-1">
           <FileText size={18}/> Next Tablet Alert
         </div>
@@ -84,7 +84,8 @@ export default function DashboardContent() {
         <button className="w-full bg-green-700 hover:bg-green-800 text-white py-2 rounded-lg text-sm font-medium">
           Update
         </button>
-      </CardWrapper>
+      </CardWrapper> */}
+     <TabletAlertWidget/>
 
     </section>
   );
