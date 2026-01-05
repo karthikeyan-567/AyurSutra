@@ -1,0 +1,195 @@
+/* =========================
+   PAGE BASE
+========================= */
+
+.appointments-content {
+  padding: 26px;
+  overflow-y: auto;
+  background: #f8faf9;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+.page-sub {
+  color: #6b7280;
+  margin-bottom: 26px;
+  font-size: 15px;
+}
+
+/* =========================
+   COMMON CARD STYLE
+========================= */
+
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px;
+  border: 1px solid #e6eae6;
+  margin-bottom: 22px;
+}
+
+/* Card title */
+.card-title {
+  color: #1b8f3c;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+/* =========================
+   LIVE CONSULTANCY
+========================= */
+
+.live-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.live-doctor {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 6px;
+}
+
+.live-status {
+  font-size: 14px;
+  color: #16a34a;
+}
+
+.live-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn-primary {
+  padding: 10px 18px;
+  border-radius: 20px;
+  background: #4f7f5f;
+  color: #ffffff;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #3f6a4d;
+}
+
+.btn-outline {
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: 1px solid #dfe6e1;
+  background: transparent;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background: #eaf7ef;
+}
+
+/* =========================
+   UPCOMING APPOINTMENT
+========================= */
+
+.upcoming-card {
+  display: flex;
+  gap: 14px;
+  background: #f0f7f3;
+  padding: 16px;
+  border-radius: 16px;
+  align-items: center;
+}
+
+.therapy-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #eaf7ef;
+  color: #1b8f3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.upcoming-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.upcoming-card p {
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 2px;
+}
+
+.upcoming-card span {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* =========================
+   APPOINTMENT HISTORY
+========================= */
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.see-all {
+  background: transparent;
+  border: none;
+  color: #1b8f3c;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.see-all:hover {
+  text-decoration: underline;
+}
+
+/* History list item */
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #eef1ef;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-item strong {
+  font-size: 15px;
+  color: #111827;
+}
+
+.history-item p {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+.history-item span {
+  font-size: 14px;
+  color: #374151;
+}
+

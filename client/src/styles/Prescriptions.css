@@ -1,0 +1,139 @@
+.prescription-wrapper {
+  padding: 24px;
+  background: #f6fbf8;
+  min-height: 100vh;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.page-sub {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+/* CARD */
+.prescription-box {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+/* HEADER */
+.prescription-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.meta {
+  display: flex;
+  gap: 18px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.status-pill {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.status-pill.active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-pill.completed {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+/* SECTIONS */
+.section-label {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 16px 0 8px;
+}
+
+/* MEDICATIONS */
+.medication-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.medication-item {
+  background: #fafaf9;
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.days-pill {
+  background: #f1f5f9;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+/* INSTRUCTIONS */
+.instructions-box {
+  background: #fafaf9;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #374151;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.btn-outline {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background: #ecfdf5;
+}
+
+/* EXPANDED */
+.expanded-details {
+  margin-top: 18px;
+  background: #f0fdf4;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .meta {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+  }
+}
