@@ -1,0 +1,167 @@
+.patient-dashboard {
+  display: flex;
+  height: 100vh;
+  background: #f8faf9;
+}
+
+.patient-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.patient-content {
+  padding: 26px;
+  overflow-y: auto;
+}
+
+.welcome-title {
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+/* GRID */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+/* CARD */
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px;
+  border: 1px solid #e6eae6;
+}
+
+.card-title {
+  color: #1b8f3c;
+  margin-bottom: 14px;
+  font-size: 18px;
+}
+
+/* PROGRESS */
+.progress-bar {
+  height: 8px;
+  background: #e5efe8;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(90deg, #1b8f3c, #34d399);
+}
+
+.progress-text {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 6px 0 16px;
+}
+
+/* PHASES */
+.phases {
+  display: flex;
+  justify-content: space-between;
+}
+
+.phase {
+  text-align: center;
+  color: #9ca3af;
+}
+
+.phase span {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #e5efe8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.phase.active span {
+  background: #1b8f3c;
+  color: #ffffff;
+}
+
+/* APPOINTMENT */
+.appointment-box {
+  background: #f0f7f3;
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.outline-btn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid #dfe6e1;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* SESSION */
+.session-item {
+  background: #f0f7f3;
+  padding: 14px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+/* VITALS */
+.vital-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.vital-pill {
+  background: #e5efe8;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* 🔔 NOTIFICATIONS */
+.notifications-card {
+  margin-bottom: 30px;
+}
+
+.notification-row {
+  display: flex;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid #eef1ef;
+  margin-bottom: 12px;
+  background: #ffffff;
+}
+
+.notification-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #eaf7ef;
+  color: #1b8f3c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notification-row p {
+  font-size: 15px;
+  margin: 0;
+}
+
+.notification-row span {
+  font-size: 13px;
+  color: #6b7280;
+}

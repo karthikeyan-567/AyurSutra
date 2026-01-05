@@ -1,0 +1,284 @@
+/* =========================
+   PAGE BASE
+========================= */
+
+.clinics-content {
+  padding: 26px;
+  background: #f8faf9;
+  min-height: 100vh;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+.page-sub {
+  color: #6b7280;
+  margin-bottom: 22px;
+  font-size: 15px;
+}
+
+/* =========================
+   SEARCH & FILTER BAR
+========================= */
+
+.filter-bar {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.filter-bar input,
+.filter-bar select {
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid #e6eae6;
+  font-size: 14px;
+  outline: none;
+  background: #ffffff;
+}
+
+.filter-bar input {
+  flex: 1;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px;
+  border: 1px solid #e6eae6;
+}
+
+/* =========================
+   HEADER (TITLE + SEE ALL)
+========================= */
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.see-all {
+  background: transparent;
+  border: none;
+  color: #1b8f3c;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.see-all:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   CLINIC CARD
+========================= */
+
+.clinic-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f0f7f3;
+  padding: 18px;
+  border-radius: 16px;
+  margin-top: 14px;
+  transition: box-shadow 0.2s ease;
+}
+
+.clinic-card:hover {
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.clinic-card h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.clinic-card p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.timing {
+  font-size: 13px;
+  color: #1b8f3c;
+  margin: 6px 0;
+}
+
+/* =========================
+   THERAPY TAGS
+========================= */
+
+.therapy-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.therapy-tags span {
+  background: #eaf7ef;
+  color: #1b8f3c;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn-outline {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #dfe6e1;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-outline:hover {
+  background: #eaf7ef;
+}
+
+.btn-primary {
+  padding: 10px 18px;
+  border-radius: 20px;
+  background: #4f7f5f;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-primary:hover {
+  background: #3f6a4d;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.no-data {
+  padding: 18px 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* =========================
+   MODAL OVERLAY
+========================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+/* =========================
+   BOOKING MODAL
+========================= */
+
+.modal {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 26px;
+  width: 380px;
+  max-width: 90%;
+}
+
+.modal h3 {
+  color: #1b8f3c;
+  margin-bottom: 10px;
+}
+
+.modal-clinic {
+  font-weight: 600;
+}
+
+.modal-time {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 14px;
+}
+
+.modal input,
+.modal select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  border: 1px solid #e6eae6;
+  font-size: 14px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* =========================
+   SUCCESS POPUP
+========================= */
+
+.success-modal {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px;
+  width: 360px;
+  text-align: center;
+}
+
+.success-icon {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.success-modal h3 {
+  color: #1b8f3c;
+  margin-bottom: 8px;
+}
+
+.success-modal p {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+  }
+
+  .clinic-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .btn-outline {
+    width: 100%;
+  }
+}
