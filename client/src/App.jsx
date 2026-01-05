@@ -17,14 +17,20 @@ import PatientFeedback from "./Pages/PatientFeedback";
 import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 import DoctorTasksPage from "./Pages/DoctorTasksPage";
-
+import PatientDashBoard from "./Pages/PatientDashBoard";
+import Appointments from "./Pages/Appointments";
+import Clinics from "./Pages/Clinics";
+import Exercises from "./Pages/Exercises";
+import Prescriptions from "./Pages/Prescriptions";
+import Profilepat from "./Pages/Profilepat";
+import Settings from "./Pages/Settings"; 
+import Progress from "./Pages/Progress";
 // import AdminSettings from "./Pages/AdminSettings";
 export default function App() {
   return (
     <Router>
       <PageTransition>
         <Routes>
-
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/" element={<DashboardPage />} />
@@ -33,20 +39,40 @@ export default function App() {
           <Route path="/patients/:id" element={<PatientProfile />} />
 
           <Route path="/settings" element={<SettingsPage />} />
-          <Route path="/doc-profile" element={<DoctorProfilePage />} />  
-          
-          <Route path="/appointments" element={<AppointmentsPage />} />
-        
-           <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/patients" element={<AdminPatients />} />
-        <Route path="/admin/reports" element={<AdminReports />} />
-        <Route path="/admin/appointments" element={<AdminAppointments />} />
-        {/* <Route path="/admin/settings" element={<AdminSettings />} /> */}
-        <Route path="/therapysum" element={<TherapySummary></TherapySummary>}></Route>
-        <Route path="/Insights" element={<AIInsights></AIInsights>}></Route>
-        <Route path="/feedback-doc" element={<PatientFeedback></PatientFeedback>}></Route>
-        <Route path="/doc-task" element={<DoctorTasksPage />} />
+          <Route path="/doc-profile" element={<DoctorProfilePage />} />
 
+          <Route path="/appointments" element={<AppointmentsPage />} />
+
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/patients" element={<AdminPatients />} />
+          <Route path="/admin/reports" element={<AdminReports />} />
+          <Route path="/admin/appointments" element={<AdminAppointments />} />
+          {/* <Route path="/admin/settings" element={<AdminSettings />} /> */}
+          <Route
+            path="/therapysum"
+            element={<TherapySummary></TherapySummary>}
+          ></Route>
+          <Route path="/Insights" element={<AIInsights></AIInsights>}></Route>
+          <Route
+            path="/feedback-doc"
+            element={<PatientFeedback></PatientFeedback>}
+          ></Route>
+          <Route path="/doc-task" element={<DoctorTasksPage />} />
+           
+
+
+
+{/* //patient */}
+{/* <Route path="/pdash" element={<Navigate to="/patient-dashboard" />} /> */}
+      
+      <Route path="/patient-dashboard" element={<PatientDashBoard />} />
+      <Route path="/appointments-pat" element={<Appointments />} />
+      <Route path="/clinics" element={<Clinics />} />
+           <Route path="/exercises" element={<Exercises />} />
+           <Route path="/prescriptions" element={<Prescriptions />} />
+           <Route path="/profile-pat" element={<Profilepat />} />
+           <Route path="/settings-pat" element={<Settings />} />
+            <Route path="/progress" element={<Progress />} />
         </Routes>
       </PageTransition>
     </Router>
