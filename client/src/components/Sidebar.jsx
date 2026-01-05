@@ -1,29 +1,43 @@
+import { Link, useLocation } from "react-router-dom";
 import { Home, Users, FileText, Calendar, Settings } from "lucide-react";
 
-export default function Sidebar() {
+export default function Sidebar({ onClose }) {
+  const location = useLocation();
+  const menu = [
+    { path: "/", label: "Dashboard", icon: <Home size={18} /> },
+    { path: "/patients", label: "Patients", icon: <Users size={18} /> },
+    { path: "/reports", label: "Reports", icon: <FileText size={18} /> },
+    { path: "/appointments", label: "Appointments", icon: <Calendar size={18} /> },
+    { path: "/settings", label: "Settings", icon: <Settings size={18} /> },
+  ];
+
   return (
-    <aside className="fixed top-0 left-0 h-screen w-64 bg-white border-r shadow-sm p-6 z-40">
-      {/* Brand Name */}
+    <aside className="fixed top-0 left-0 h-screen w-64 bg-white border-r shadow-sm p-6">
       <h1 className="text-2xl font-semibold text-green-700 mb-8">AyurSutra</h1>
 
-      {/* Menu */}
-      <ul className="space-y-5 text-gray-600 font-medium">
-        <li className="flex items-center gap-3 hover:text-green-700 cursor-pointer">
-          <Home size={20} className="text-green-700" /> Home
-        </li>
-        <li className="flex items-center gap-3 hover:text-green-700 cursor-pointer">
-          <Users size={20} className="text-green-700" /> Patients
-        </li>
-        <li className="flex items-center gap-3 hover:text-green-700 cursor-pointer">
-          <FileText size={20} className="text-green-700" /> Medical Reports
-        </li>
-        <li className="flex items-center gap-3 hover:text-green-700 cursor-pointer">
-          <Calendar size={20} className="text-green-700" /> Appointments
-        </li>
-        <li className="flex items-center gap-3 hover:text-green-700 cursor-pointer">
-          <Settings size={20} className="text-green-700" /> Settings
-        </li>
-      </ul>
+      <nav className="space-y-4">
+        {menu.map((m, i) => {
+          const active = location.pathname === m.path;
+          return (
+            <Link
+              key={i}
+              to={m.path}
+              onClick={onClose}
+              className={`flex items-center gap-3 px-4 py-2 rounded-xl transition relative
+                ${active ? "text-green-700 bg-green-50 font-semibold" : "text-gray-600 hover:text-green-700 hover:bg-green-50/40"}
+              `}
+            >
+              {/* Active Green Bar */}
+              {active && (
+                <span className="absolute left-0 top-2 bottom-2 w-1 bg-green-700 rounded-r-lg"></span>
+              )}
+
+              <span className="text-green-700">{m.icon}</span>
+              {m.label}
+            </Link>
+          );
+        })}
+      </nav>
     </aside>
   );
 }
