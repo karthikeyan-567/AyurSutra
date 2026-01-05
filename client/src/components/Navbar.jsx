@@ -11,7 +11,11 @@ export default function Navbar({ onMenuClick }) {
           <Menu size={24} />
         </button> */}
         <h1 className="text-xl font-semibold text-green-700 tracking-tight">
+<<<<<<< HEAD
           AyurSutra
+=======
+          AvartanaCare
+>>>>>>> 1884859f5c879475243aaf96b7b2d0d24093ed92
         </h1>
       </div>
 

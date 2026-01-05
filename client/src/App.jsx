@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { Routes, Route, Navigate } from "react-router-dom";
 
 // Pages
@@ -59,6 +60,35 @@ export default function App() {
       <PageTransition>
         <Routes>
 
+=======
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import DashboardPage from "./Pages/DashboardPage";
+import PatientPage from "./Pages/PatientPage";
+import ReportsPage from "./Pages/ReportsPage";
+import PatientProfile from "./Pages/PatientProfile";
+import PageTransition from "./Components/PageTransition";
+import AppointmentsPage from "./Pages/AppointmentPage";
+import SettingsPage from "./Pages/SettingsPage";
+import DoctorProfilePage from "./Pages/DoctorProfilePage";
+import AdminDashboard from "./Pages/AdminDashboard";
+import AdminPatients from "./Pages/AdminPatients";
+import AdminReports from "./Pages/AdminReports";
+import AdminAppointments from "./Pages/AdminAppointments";
+import AIInsights from "./Pages/AIInsights";
+import TherapySummary from "./Pages/TherapySummary";
+import PatientFeedback from "./Pages/PatientFeedback";
+import LoginPage from "./Pages/LoginPage";
+import RegisterPage from "./Pages/RegisterPage";
+import DoctorTasksPage from "./Pages/DoctorTasksPage";
+
+// import AdminSettings from "./Pages/AdminSettings";
+export default function App() {
+  return (
+    <Router>
+      <PageTransition>
+        <Routes>
+
+>>>>>>> 1884859f5c879475243aaf96b7b2d0d24093ed92
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/" element={<DashboardPage />} />
@@ -86,4 +116,7 @@ export default function App() {
     </Router>
   );
 }
+<<<<<<< HEAD
 >>>>>>> 194efee8d3db073e0cae3064b9dd469f032ded22
+=======
+>>>>>>> 1884859f5c879475243aaf96b7b2d0d24093ed92
