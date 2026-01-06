@@ -29,6 +29,7 @@ export default function PatientSideBar() {
         </NavLink>
 
         <NavLink to="/clinics">
+        
           <Hospital size={20} /> Therapy Centers
         </NavLink>
 
