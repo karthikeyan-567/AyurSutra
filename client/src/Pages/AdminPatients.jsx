@@ -1,5 +1,5 @@
-import AdminSidebar from "../Components/AdminSidebar";
-import AdminNavbar from "../Components/AdminNavbar";
+import AdminSidebar from "../components/AdminSidebar";
+import AdminNavbar from "../components/AdminNavbar";
 import { User } from "lucide-react";
 
 export default function AdminPatients() {

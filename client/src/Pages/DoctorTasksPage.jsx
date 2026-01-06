@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import DoctorSidebar from "../Components/Sidebar";
-import DoctorNavbar from "../Components/Navbar";
+import DoctorSidebar from "../components/Sidebar";
+import DoctorNavbar from "../components/Navbar";
 import { CheckCircle, Clock } from "lucide-react";
 
 export default function DoctorTasksPage() {

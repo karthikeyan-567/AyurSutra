@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import AdminSidebar from "../Components/AdminSidebar";
-import AdminNavbar from "../Components/AdminNavbar";
+import AdminSidebar from "../components/AdminSidebar";
+import AdminNavbar from "../components/AdminNavbar";
 import {
   Users,
   FileText,
