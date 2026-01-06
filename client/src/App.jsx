@@ -47,7 +47,7 @@ export default function App() {
         <Route path="/register" element={<RegisterPage />} />
 
         {/* Default */}
-        <Route path="/" element={<Navigate to="/dashboard" />} />
+        <Route path="/" element={<Navigate to="/login" />} />
 
         {/* Doctor */}
         <Route path="/dashboard" element={<DashboardPage />} />
