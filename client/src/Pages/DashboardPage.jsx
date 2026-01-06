@@ -1,7 +1,6 @@
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
 import DashboardContent from "../components/DashboardContent";
-import TabletAlertWidget from "../components/TabletAlertWidget";
 
 
 
