@@ -46,6 +46,7 @@ export default function Appointments() {
               >
                 Join Live Session
               </button>
+              <button className="btn-outline">Emergency Call</button>
             </div>
           </div>
 

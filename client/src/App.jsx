@@ -9,6 +9,7 @@ import Prescriptions from "./Pages/Prescriptions";
 import Profile from "./Pages/Profile";
 import Settings from "./Pages/Settings";
 import Progress from "./Pages/Progress";
+import SeatAvailability from "./Pages/SeatAvailability";
 
 // Doctor / Admin Pages
 import DashboardPage from "./Pages/DashboardPage";
@@ -75,9 +76,10 @@ export default function App() {
         <Route path="/clinics" element={<Clinics />} />
         <Route path="/exercises" element={<Exercises />} />
         <Route path="/prescriptions" element={<Prescriptions />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile-pap" element={<Profile />} />
         <Route path="/patient-settings" element={<Settings />} />
         <Route path="/progress" element={<Progress />} />
+        <Route path="/seat-availability" element={<SeatAvailability />} />
 
       </Routes>
     </PageTransition>
