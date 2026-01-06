@@ -45,7 +45,6 @@ import TherapySummary from "./Pages/TherapySummary";
 import PatientFeedback from "./Pages/PatientFeedback";
 import DoctorSeat from "./Pages/DoctorSeat";
 // Animation
-import PageTransition from "./Components/PageTransition";
 
 export default function App() {
   return (

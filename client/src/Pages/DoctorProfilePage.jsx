@@ -1,4 +1,3 @@
-import PageTransition from "../Components/PageTransition";
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
 import { User, Mail, Phone, MapPin, Award, Stethoscope, Leaf } from "lucide-react";
@@ -24,7 +23,7 @@ export default function DoctorProfilePage() {
   };
 
   return (
-    <PageTransition>
+   
       <div className="bg-gray-50 min-h-screen">
         <Sidebar />
         <Navbar />
@@ -148,6 +147,6 @@ export default function DoctorProfilePage() {
 
         </main>
       </div>
-    </PageTransition>
+ 
   );
 }

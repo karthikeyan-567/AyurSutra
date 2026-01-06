@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import PageTransition from "../Components/PageTransition";
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
 import { UserRound, Bell, Palette, Shield, LogOut, Download, FileText } from "lucide-react";
@@ -11,7 +10,7 @@ export default function SettingsPage() {
   const [notifications, setNotifications] = useState(true);
 
   return (
-    <PageTransition>
+    
       <div className="bg-green-50 min-h-screen">
         <Sidebar />
         <Navbar />
@@ -148,7 +147,7 @@ export default function SettingsPage() {
           }
         `}</style>
       </div>
-    </PageTransition>
+    
   );
 }
 
