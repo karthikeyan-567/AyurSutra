@@ -33,7 +33,7 @@ import Doctors from "./Pages/Doctors";
 import Seatav from "./Pages/Seatav";
 import AccessControl from "./Pages/AcessControl";
 import Notifications from "./Pages/Notification";
-import AdminSettings from "./Pages/AdminSettings";  
+// import AdminSettings from "./Pages/AdminSettings";  
 
 
 
