@@ -1,5 +1,5 @@
-import Navbar from "../Components/Navbar";
-import Sidebar from "../Components/Sidebar";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 import { User, Mail, Phone, MapPin, Award, Stethoscope, Leaf } from "lucide-react";
 import { useState } from "react";
 

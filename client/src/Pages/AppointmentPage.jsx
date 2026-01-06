@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Calendar, Clock, User, CheckCircle, Filter } from "lucide-react";
-import Navbar from "../Components/Navbar";
-import Sidebar from "../Components/Sidebar";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 export default function AppointmentsPage() {
   const [filter, setFilter] = useState("All");
 
