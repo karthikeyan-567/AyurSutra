@@ -1,6 +1,6 @@
 import { useState } from "react";
-import PatientSideBar from "../components/SideBar";
-import PatientNavBar from "../components/NavBar";
+import SideBar from "../components/Sidebar";
+import NavBar from "../components/NavBar";
 import "../styles/SeatAvailability.css";
 
 const initialBeds = Array.from({ length: 20 }, (_, i) => {
@@ -71,9 +71,9 @@ export default function DoctorSeat() {
 
   return (
     <div className="patient-dashboard w-[70%] relative left-[300px]">
-      <PatientSideBar />
+      <SideBar />
       <div className="patient-main">
-        <PatientNavBar />
+        <NavBar />
 
         <div className="seat-wrapper">
           <h2 className="page-title">Bed Availability</h2>
