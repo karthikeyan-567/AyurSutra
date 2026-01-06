@@ -1,7 +1,7 @@
 import PatientSideBar from "../components/PatientSideBar";
 import PatientNavBar from "../components/PatientNavBar";
 import "../styles/PatientDashboard.css";
-
+import { NavLink } from "react-router-dom";
 export default function PatientDashBoard() {
   return (
     <div className="patient-dashboard">
@@ -43,10 +43,12 @@ export default function PatientDashBoard() {
                 <strong>Tomorrow, 10:00 AM</strong>
                 <span>With Dr. Mukil </span>
               </div>
+<NavLink to="/patient-appointments">
 
               <button className="outline-btn">
                 View All Appointments →
               </button>
+              </NavLink>
             </div>
 
           </div>

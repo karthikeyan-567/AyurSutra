@@ -1,0 +1,181 @@
+/* ================================
+   FORCE FULL WIDTH FIX
+================================ */
+.patient-main {
+  width: 100%;
+  max-width: none;
+  padding-right: 0 !important;
+}
+
+/* ================================
+   INSURANCE PAGE WRAPPER
+================================ */
+.insurance-wrapper {
+  width: 100%;
+  max-width: 100%;
+  padding: 28px 32px 60px 32px;
+  box-sizing: border-box;
+}
+
+/* ================================
+   PAGE HEADER
+================================ */
+.page-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1e1e1e;
+  margin-bottom: 4px;
+}
+
+.page-sub {
+  font-size: 15px;
+  color: #6b8f71;
+  margin-bottom: 26px;
+}
+
+/* ================================
+   MAIN INSURANCE CARD
+================================ */
+.insurance-card {
+  width: 100%;
+  background: linear-gradient(135deg, #43a047, #2e7d32);
+  border-radius: 22px;
+  padding: 32px;
+  color: #ffffff;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+  margin-bottom: 32px;
+}
+
+/* ================================
+   CARD HEADER
+================================ */
+.insurance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.insurance-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.insurance-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.insurance-name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.insurance-policy {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.insurance-status {
+  background: #e8f5e9;
+  color: #2e7d32;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* ================================
+   DETAILS GRID
+================================ */
+.insurance-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.insurance-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  padding-bottom: 10px;
+}
+
+.insurance-label {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.insurance-value {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ================================
+   WHITE SECTIONS
+================================ */
+.insurance-section {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 26px;
+  margin-bottom: 28px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+/* ================================
+   COVERED TREATMENTS
+================================ */
+.covered-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 30px;
+}
+
+.covered-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.covered-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #2e7d32;
+  color: #fff;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 900px) {
+  .insurance-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .covered-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insurance-wrapper {
+    padding: 20px;
+  }
+}

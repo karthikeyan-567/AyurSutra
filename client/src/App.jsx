@@ -10,6 +10,8 @@ import Profile from "./Pages/Profile";
 import Settings from "./Pages/Settings";
 import Progress from "./Pages/Progress";
 import SeatAvailability from "./Pages/SeatAvailability";
+import LandingPage from "./Pages/LandingPage";  
+import Insurance from "./Pages/insurance";
 
 // Doctor / Admin Pages
 import DashboardPage from "./Pages/DashboardPage";
@@ -45,9 +47,11 @@ export default function App() {
         {/* Auth */}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/landing" element={<LandingPage />} />
+
 
         {/* Default */}
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/" element={<Navigate to="/landing" />} />
 
         {/* Doctor */}
         <Route path="/dashboard" element={<DashboardPage />} />
@@ -80,7 +84,8 @@ export default function App() {
         <Route path="/patient-settings" element={<Settings />} />
         <Route path="/progress" element={<Progress />} />
         <Route path="/seat-availability" element={<SeatAvailability />} />
-
+        <Route path="/insurance" element={<Insurance />} />
+        
       </Routes>
     </PageTransition>
   );
