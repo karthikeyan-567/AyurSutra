@@ -8,7 +8,8 @@ import {
   TrendingUp,
   User,
   Settings,
-  Bed
+  Bed,
+  ShieldCheck
   
 } from "lucide-react";
 
@@ -43,8 +44,9 @@ export default function PatientSideBar() {
         <NavLink to="/progress">
           <TrendingUp size={20} /> Progress & Reports
         </NavLink>
-       <NavLink to="/seat-availability">
-  <Bed size={20} /> Seat Availability
+    
+<NavLink to="/insurance">
+  <ShieldCheck size={20} /> Insurance
 </NavLink>
 
 
