@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.light-green {
+  --primary: #16a34a;
+  --bg: #f0fdf4;
+  --text: #064e3b;
+}
+
+.dark-green {
+  --primary: #065f46;
+  --bg: #022c22;
+  --text: #d1fae5;
+}
+
+.blue-green {
+  --primary: #0d9488;
+  --bg: #ecfdf5;
+  --text: #134e4a;
+}
+
+.light-green, .dark-green, .blue-green {
+  background-color: var(--bg);
+  color: var(--text);
+}
