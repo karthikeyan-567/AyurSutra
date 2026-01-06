@@ -50,7 +50,7 @@ import PageTransition from "./Components/PageTransition";
 export default function App() {
   return (
      
-    <PageTransition>
+   
        <ThemeProvider>
       <Routes>
 
@@ -106,7 +106,7 @@ export default function App() {
         
       </Routes>
       </ThemeProvider>
-    </PageTransition>
+
     
   );
 }
