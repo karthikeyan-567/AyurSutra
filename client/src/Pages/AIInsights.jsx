@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import DoctorSidebar from "../Components/Sidebar";
-import DoctorNavbar from "../Components/Navbar";
+import Sidebar from "../Components/Sidebar";
+import Navbar from "../Components/Navbar";
 import { Brain, HeartPulse, Leaf, Activity } from "lucide-react";
 
 export default function AIInsightsAltPage() {
@@ -28,8 +28,8 @@ export default function AIInsightsAltPage() {
 
   return (
     <div className="min-h-screen">
-      <DoctorSidebar />
-      <DoctorNavbar doctorName="Karthikeyan J" />
+      <Sidebar />
+      <Navbar doctorName="Karthikeyan J" />
 
       <main className="ml-64 p-6 pt-20">
         <h1 className="text-3xl font-semibold text-green-700 mb-6">AI Health Insights</h1>
