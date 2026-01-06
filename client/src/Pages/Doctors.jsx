@@ -1,8 +1,12 @@
 import { UserCheck, PhoneCall, Mail } from "lucide-react";
-
+import AdminSidebar from "../components/AdminSidebar";
+import AdminNavbar from "../components/AdminNavbar";
 export default function Doctors() {
   return (
     <div className="ml-64 p-8 bg-green-50 min-h-screen">
+    <AdminNavbar></AdminNavbar>
+    <AdminSidebar></AdminSidebar>
+    
       <h1 className="text-3xl font-bold text-green-700 mb-6 flex items-center gap-2">
         <UserCheck size={26} /> Doctors List
       </h1>

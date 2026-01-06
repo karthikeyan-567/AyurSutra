@@ -44,7 +44,7 @@ export default function AdminSidebar() {
       label: "Notifications",
       icon: <Bell size={18} />,
     },
-    { path: "/settings", label: "Settings", icon: <Settings size={18} /> },
+    
   ];
 
   return (

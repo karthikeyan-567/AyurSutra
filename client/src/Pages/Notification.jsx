@@ -1,8 +1,12 @@
 import { Bell, AlertCircle } from "lucide-react";
-
+import AdminNavbar from "../components/AdminNavbar";
+import AdminSidebar from "../components/AdminSidebar";
 export default function Notifications() {
   return (
     <div className="ml-64 p-8 bg-green-50 min-h-screen">
+   
+<AdminNavbar></AdminNavbar>   
+   <AdminSidebar></AdminSidebar>
       <h1 className="text-3xl font-bold text-green-700 mb-6 flex items-center gap-2">
         <Bell size={26}/> Notifications
       </h1>

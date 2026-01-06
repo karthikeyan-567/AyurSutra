@@ -28,13 +28,13 @@ import AdminDashboard from "./Pages/AdminDashboard";
 import AdminPatients from "./Pages/AdminPatients";
 import AdminReports from "./Pages/AdminReports";
 import AdminAppointments from "./Pages/AdminAppointments";
-import ClinicsAdmin from "./Pages/Clinics";
+import ClinicsAdmin from "./Pages/ClinicsAdmin";
 import Doctors from "./Pages/Doctors";
 import Seatav from "./Pages/Seatav";
 import AccessControl from "./Pages/AcessControl";
 import Notifications from "./Pages/Notification";
 // import AdminSettings from "./Pages/AdminSettings";  
-
+// import AdminSettings from "./Pages/AdminSettings";
 
 
 // Auth & AI
@@ -80,10 +80,10 @@ export default function App() {
         <Route path="/admin/appointments" element={<AdminAppointments />} />
   <Route path="/adclinics" element={<ClinicsAdmin/>}/>
   <Route path="/doctors" element={<Doctors/>}/>
-  <Route path="/seat-availability" element={<SeatAvailability/>}/>
+  <Route path="/seatav" element={<Seatav/>}/>
   <Route path="/access-control" element={<AccessControl/>}/>
   <Route path="/notifications" element={<Notifications/>}/>
-  <Route path="/settings" element={<Settings/>}/>
+  {/* <Route path="/ad-settings" element={<AdminSettings/>}/> */}
 
 
         {/* AI */}
