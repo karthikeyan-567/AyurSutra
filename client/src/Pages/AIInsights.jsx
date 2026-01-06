@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Sidebar from "../Components/Sidebar";
-import Navbar from "../Components/Navbar";
+import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
 import { Brain, HeartPulse, Leaf, Activity } from "lucide-react";
 
 export default function AIInsightsAltPage() {
