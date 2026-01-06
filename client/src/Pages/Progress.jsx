@@ -1,25 +1,38 @@
+import { useState } from "react";
 import PatientSideBar from "../components/PatientSideBar";
 import PatientNavBar from "../components/PatientNavBar";
 import "../styles/Progress.css";
 
 export default function Progress() {
-  const todayTasks = [
+  const [showReport, setShowReport] = useState(false);
+  const [uploadedFile, setUploadedFile] = useState("");
+
+  const dailyTasks = [
     { name: "Surya Namaskara", percent: 80 },
     { name: "Pranayama", percent: 60 },
     { name: "Meditation", percent: 100 }
   ];
 
-  const therapyImprovement = [
+  const therapyProgress = [
     { day: "Mon", value: 40 },
     { day: "Tue", value: 55 },
     { day: "Wed", value: 70 },
     { day: "Thu", value: 65 },
-    { day: "Fri", value: 85 }
+    { day: "Fri", value: 85 },
+    { day: "Sat", value: 90 }
   ];
 
-  const attendance = {
-    attended: 8,
-    missed: 2
+  const doctorReport = [
+    "Vata-Pitta imbalance improving",
+    "Better sleep and digestion",
+    "Stress levels reduced",
+    "Continue Abhyanga & Pranayama"
+  ];
+
+  const handleUpload = (e) => {
+    if (e.target.files[0]) {
+      setUploadedFile(e.target.files[0].name);
+    }
   };
 
   return (
@@ -32,34 +45,35 @@ export default function Progress() {
         <div className="progress-wrapper">
           <h2 className="page-title">Progress</h2>
           <p className="page-sub">
-            Track your daily activities, therapy improvement and session
-            attendance
+            Track your daily improvement, therapy progress & reports
           </p>
 
-          {/* TODAY TASKS */}
+          {/* DAILY TASKS PROGRESS */}
           <div className="progress-card">
-            <h3 className="section-title">Today's Tasks</h3>
+            <h3 className="section-title">Daily Tasks Progress</h3>
 
-            {todayTasks.map((task, index) => (
+            {dailyTasks.map((task, index) => (
               <div key={index} className="task-row">
                 <span>{task.name}</span>
+
                 <div className="progress-bar">
                   <div
                     className="progress-fill"
                     style={{ width: `${task.percent}%` }}
                   ></div>
                 </div>
+
                 <strong>{task.percent}%</strong>
               </div>
             ))}
           </div>
 
-          {/* THERAPY IMPROVEMENT */}
+          {/* THERAPY PROGRESS */}
           <div className="progress-card">
             <h3 className="section-title">Therapy Improvement</h3>
 
             <div className="bar-chart">
-              {therapyImprovement.map((item, index) => (
+              {therapyProgress.map((item, index) => (
                 <div key={index} className="bar-item">
                   <div
                     className="bar"
@@ -71,24 +85,66 @@ export default function Progress() {
             </div>
           </div>
 
-          {/* SESSION ATTENDANCE */}
+          {/* REPORT SECTION */}
           <div className="progress-card">
-            <h3 className="section-title">Session Attendance</h3>
+            <h3 className="section-title">Ayurveda Therapy Report</h3>
 
-            <div className="attendance-box">
-              <div className="attended">
-                <h4>{attendance.attended}</h4>
-                <p>Sessions Attended</p>
-              </div>
+            <div className="report-row">
+              <p>Doctor Review Report</p>
 
-              <div className="missed">
-                <h4>{attendance.missed}</h4>
-                <p>Sessions Missed</p>
-              </div>
+              <button
+                className="icon-btn"
+                onClick={() => setShowReport(true)}
+              >
+                👁 View
+              </button>
+            </div>
+
+            <div className="upload-box">
+              <label>
+                Upload Your Body Checkup Report
+                <input
+                  type="file"
+                  accept=".pdf,.jpg,.png"
+                  hidden
+                  onChange={handleUpload}
+                />
+              </label>
+
+              {uploadedFile && (
+                <p className="upload-success">
+                  ✅ {uploadedFile} uploaded successfully
+                </p>
+              )}
             </div>
           </div>
         </div>
       </div>
+
+      {/* REPORT MODAL */}
+      {showReport && (
+        <div className="modal-overlay">
+          <div className="modal report-modal">
+            <h3>Doctor Therapy Report</h3>
+            <p className="modal-meta">
+              Dr. Mukil S · Ayurveda Specialist
+            </p>
+
+            <ul className="report-list">
+              {doctorReport.map((item, i) => (
+                <li key={i}>✔ {item}</li>
+              ))}
+            </ul>
+
+            <button
+              className="btn-primary"
+              onClick={() => setShowReport(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

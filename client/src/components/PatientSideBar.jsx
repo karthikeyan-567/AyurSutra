@@ -7,7 +7,10 @@ import {
   FileText,
   TrendingUp,
   User,
-  Settings
+  Settings,
+  Bed,
+  ShieldCheck
+  
 } from "lucide-react";
 
 import "../styles/PatientSideBar.css";
@@ -22,7 +25,7 @@ export default function PatientSideBar() {
           <Home size={20} /> Dashboard
         </NavLink>
 
-        <NavLink to="/appointments">
+        <NavLink to="/patient-appointments">
           <Calendar size={20} /> Appointments
         </NavLink>
 
@@ -39,16 +42,22 @@ export default function PatientSideBar() {
         </NavLink>
 
         <NavLink to="/progress">
-          <TrendingUp size={20} /> Progress
+          <TrendingUp size={20} /> Progress & Reports
         </NavLink>
+    
+<NavLink to="/insurance">
+  <ShieldCheck size={20} /> Insurance
+</NavLink>
 
-        <NavLink to="/profile">
+
+        <NavLink to="/profile-pap">
           <User size={20} /> Profile
         </NavLink>
 
-        <NavLink to="/settings">
+        <NavLink to="/patient-settings">
           <Settings size={20} /> Settings
         </NavLink>
+
       </nav>
     </aside>
   );

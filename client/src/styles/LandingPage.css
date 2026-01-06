@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background: #ffffff;
+  color: #1f2937;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.9s ease;
+}
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100px;
+  background: linear-gradient(135deg, #ecfdf5, #ffffff);
+}
+.hero-image {
+  width: 480px;
+  border-radius: 30px;
+}
+.badge {
+  background: #dcfce7;
+  color: #166534;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+.hero h1 {
+  font-size: 56px;
+  margin: 20px 0;
+  color: #14532d;
+}
+.hero-sub {
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #475569;
+}
+.cta-btn {
+  margin-top: 25px;
+  padding: 14px 36px;
+  border-radius: 40px;
+  border: none;
+  background: #166534;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* TRUST */
+.trust {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px;
+  background: #6fdf91;
+  font-weight: 600;
+}
+
+/* THERAPY */
+.therapy {
+  display: flex;
+  gap: 70px;
+  padding: 90px;
+  align-items: center;
+}
+.therapy.reverse {
+  flex-direction: row-reverse;
+}
+.therapy img {
+  width: 420px;
+  border-radius: 24px;
+}
+.therapy-content h3 {
+  font-size: 34px;
+  color: #14532d;
+}
+.therapy-content p {
+  margin: 15px 0;
+  line-height: 1.7;
+}
+.therapy-content li {
+  margin-bottom: 8px;
+}
+
+/* WHY */
+.why {
+  padding: 100px;
+  background: #f8fcfb;
+}
+.why h2 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.why-grid div {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* FINAL CTA */
+.final-cta {
+  padding: 100px;
+  text-align: center;
+  background: #14532d;
+  color: rgb(255, 255, 255);
+}
+.final-cta p {
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 25px;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+.cta-outline {
+  margin-left: 15px;
+  padding: 14px 36px;
+  border-radius: 40px;
+  border: 2px solid #166534;
+  background: transparent;
+  color: #166534;
+  font-size: 16px;
+  cursor: pointer;
+}

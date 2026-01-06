@@ -1,98 +1,55 @@
-import { motion } from "framer-motion";
-import Navbar from "../Components/Navbar";
-import Sidebar from "../Components/Sidebar";
-import { Brain, Sparkles, TrendingUp } from "lucide-react";
+import { useState, useEffect } from "react";
+import DoctorSidebar from "../Components/Sidebar";
+import DoctorNavbar from "../Components/Navbar";
+import { Brain, HeartPulse, Leaf, Activity } from "lucide-react";
 
-export default function AIInsights() {
-  const insights = [
-    {
-      id: 1,
-      text: "Vata imbalance detected higher in winter OP cases",
-      impact: "seasonal",
-    },
-    {
-      id: 2,
-      text: "Shirodhara shows 22% faster recovery vs average therapies",
-      impact: "high",
-    },
-    {
-      id: 3,
-      text: "Pitta cases peak post 6PM spicy-diet patterns",
-      impact: "medium",
-    },
-  ];
+export default function AIInsightsAltPage() {
+  const [insights, setInsights] = useState([]);
+
+  useEffect(() => {
+    setInsights([
+      { id: 1, patient: "Swetha", type: "Dosha", text: "Vata imbalance – recommend oil massage + warm meals" },
+      { id: 2, patient: "Mukil", type: "Stress", text: "High stress markers – suggest pranayama twice daily" },
+      { id: 3, patient: "Ravi", type: "Recovery", text: "Slow muscle recovery – herbal compress and turmeric milk" },
+      { id: 4, patient: "Meera", type: "Digestion", text: "Low Agni – ginger-lemon before meals, avoid cold food" },
+      { id: 5, patient: "Arun", type: "Dosha", text: "Kapha dominance – light food and post-meal walk suggested" },
+      { id: 6, patient: "Riya", type: "Skin", text: "Inflammation detected – neem + turmeric paste recommended" },
+    ]);
+  }, []);
+
+  const iconMap = {
+    Dosha: <Leaf size={18} />,
+    Stress: <HeartPulse size={18} />,
+    Digestion: <Leaf size={18} />,
+    Recovery: <Activity size={18} />,
+    Skin: <Brain size={18} />,
+    Recovery: <Activity size={18} />
+  };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.35, ease: "easeOut" }}
-      className="flex"
-    >
-      <Sidebar />
+    <div className="min-h-screen">
+      <DoctorSidebar />
+      <DoctorNavbar doctorName="Karthikeyan J" />
 
-      <div className="flex-1">
-        <Navbar />
+      <main className="ml-64 p-6 pt-20">
+        <h1 className="text-3xl font-semibold text-green-700 mb-6">AI Health Insights</h1>
 
-        <main className="pt-24 pl-72 pr-6 bg-gray-50 min-h-screen max-w-5xl">
-          <div className="flex items-center gap-2 text-green-700 text-2xl font-semibold mb-6">
-            <Brain size={24} />
-            AI Therapy Insights
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-            <div className="bg-white border rounded-2xl shadow-sm p-4 flex items-center gap-3">
-              <Sparkles className="text-green-700" size={18} />
-              <div>
-                <p className="text-xs text-gray-500">Insight Accuracy</p>
-                <h3 className="text-lg font-semibold text-green-700">87%</h3>
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+          {insights.map(i => (
+            <div
+              key={i.id}
+              className="bg-white p-4 rounded-2xl border border-green-200 shadow-sm"
+            >
+              <div className="flex items-center gap-2 text-green-600 font-semibold mb-2">
+                {iconMap[i.type] || <Brain size={18} />}
+                {i.type}
               </div>
+              <p className="text-xs text-gray-500 mb-1">Patient: <b className="text-green-700">{i.patient}</b></p>
+              <p className="text-sm text-gray-700">{i.text}</p>
             </div>
-
-            <div className="bg-white border rounded-2xl shadow-sm p-4 flex items-center gap-3">
-              <TrendingUp className="text-green-700" size={18} />
-              <div>
-                <p className="text-xs text-gray-500">Therapy Success</p>
-                <h3 className="text-lg font-semibold text-green-700">92%</h3>
-              </div>
-            </div>
-
-            <div className="bg-white border rounded-2xl shadow-sm p-4 flex items-center gap-3">
-              <TrendingUp className="text-green-700" size={18} />
-              <div>
-                <p className="text-xs text-gray-500">Recovery Boost</p>
-                <h3 className="text-lg font-semibold text-green-700">22%+</h3>
-              </div>
-            </div>
-          </div>
-
-          {/* Insight Feed */}
-          <div className="bg-white border rounded-2xl shadow-sm p-6">
-            <div className="flex items-center gap-2 text-sm font-semibold text-green-700 mb-4">
-              <TrendingUp size={16} />
-              Key Observations
-            </div>
-
-            <div className="space-y-4">
-              {insights.map(i => (
-                <motion.div
-                  key={i.id}
-                  whileHover={{ x: 4 }}
-                  transition={{ duration: 0.2 }}
-                  className="text-sm text-gray-700 bg-green-50 p-4 rounded-xl border-l-4 border-green-600"
-                >
-                  <p>{i.text}</p>
-                  <div className="text-[10px] text-green-700 mt-1 flex items-center gap-1">
-                    <TrendingUp size={12} />
-                    Impact: {i.impact.toUpperCase()}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </main>
-      </div>
-    </motion.div>
+          ))}
+        </div>
+      </main>
+    </div>
   );
 }
