@@ -4,7 +4,7 @@ import { Home, Users, FileText, Calendar, Settings, LayoutGrid } from "lucide-re
 export default function Sidebar({ onClose }) {
   const location = useLocation();
   const menu = [
-    { path: "/", label: "Dashboard", icon: <Home size={18} /> },
+    { path: "/dashboard", label: "Dashboard", icon: <Home size={18} /> },
     { path: "/patients", label: "Patients", icon: <Users size={18} /> },
     { path: "/reports", label: "Reports", icon: <FileText size={18} /> },
     { path: "/appointments", label: "Appointments", icon: <Calendar size={18} /> },
