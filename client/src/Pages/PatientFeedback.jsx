@@ -1,6 +1,6 @@
 import { useState } from "react";
-import DoctorSidebar from "../Components/Sidebar";
-import DoctorNavbar from "../Components/Navbar";
+import DoctorSidebar from "../components/Sidebar";
+import DoctorNavbar from "../components/Navbar";
 
 export default function DoctorFeedbackPage() {
   const [feedbacks, setFeedbacks] = useState([]);
