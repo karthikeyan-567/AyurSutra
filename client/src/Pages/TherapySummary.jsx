@@ -1,34 +1,9 @@
-<<<<<<< HEAD
-import PageTransition from "../components/PageTransition";
-import AdminSidebar from "../Components/Sidebar";
-import Navbar from "../Components/Navbar";
-
-export default function TherapySummary() {
-  return (
-    <PageTransition>
-      <AdminSidebar />
-      <Navbar />
-      <main className="ml-64 mt-20 p-6 bg-gray-50 min-h-screen">
-        <h2 className="text-2xl font-semibold text-green-700 mb-4">Therapy Summary</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="bg-white border rounded-2xl shadow-sm p-4">
-            <h3 className="text-green-700 font-semibold mb-2">Total Sessions</h3>
-            <p className="text-3xl font-bold text-green-700">19.5K</p>
-          </div>
-          <div className="bg-white border rounded-2xl shadow-sm p-4">
-            <h3 className="text-green-700 font-semibold mb-2">Most Used Therapy</h3>
-            <p className="text-xl font-bold text-gray-700">Panchakarma</p>
-          </div>
-        </div>
-      </main>
-    </PageTransition>
-=======
 import { motion } from "framer-motion";
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
 import { Leaf, BarChart2 } from "lucide-react";
 
-export default function TherapySummaryPage() {
+export default function TherapySummary() {
   const therapies = [
     { name: "Shirodhara", count: 14, trend: "+12%" },
     { name: "Abhyanga Massage", count: 22, trend: "+8%" },
@@ -44,39 +19,52 @@ export default function TherapySummaryPage() {
       className="flex"
     >
       <Sidebar />
+
       <div className="flex-1">
         <Navbar />
 
-        <main className="pt-24 pl-72 pr-6">
-          <div className="flex items-center gap-2 text-green-700 text-xl font-semibold mb-6">
-            <Leaf size={24}/> Therapy Summary
+        <main className="pt-24 pl-72 pr-6 bg-gray-50 min-h-screen">
+          <div className="flex items-center gap-2 text-green-700 text-2xl font-semibold mb-6">
+            <Leaf size={24} />
+            Therapy Summary
           </div>
 
-          {/* Stat row */}
-          <div className="grid grid-cols-4 gap-4 mb-6">
+          {/* Stats row */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             {therapies.map(t => (
-              <div key={t.name} className="bg-white border rounded-2xl shadow-sm p-4 flex items-center gap-2">
-                <Leaf className="text-green-700" size={18}/>
+              <div
+                key={t.name}
+                className="bg-white border rounded-2xl shadow-sm p-4 flex items-center gap-3"
+              >
+                <Leaf className="text-green-700" size={18} />
                 <div>
                   <p className="text-xs text-gray-500">{t.name}</p>
-                  <h3 className="text-lg font-semibold text-green-700">{t.count}</h3>
-                  <p className="text-[10px] text-green-600">{t.trend}</p>
+                  <h3 className="text-lg font-semibold text-green-700">
+                    {t.count}
+                  </h3>
+                  <p className="text-[11px] text-green-600">{t.trend}</p>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Therapy list */}
-          <div className="bg-white border rounded-2xl shadow-sm p-6">
+          <div className="bg-white border rounded-2xl shadow-sm p-6 max-w-3xl">
             <div className="flex items-center gap-2 font-semibold text-green-700 mb-4">
-              <BarChart2 size={18}/> Most Performed Therapies
+              <BarChart2 size={18} />
+              Most Performed Therapies
             </div>
 
             <div className="space-y-3 text-sm text-gray-600">
               {therapies.map(t => (
-                <div key={t.name} className="flex justify-between border-b pb-2">
+                <div
+                  key={t.name}
+                  className="flex justify-between border-b last:border-none pb-2"
+                >
                   <span>{t.name}</span>
-                  <span className="font-medium text-green-700">{t.count} sessions</span>
+                  <span className="font-medium text-green-700">
+                    {t.count} sessions
+                  </span>
                 </div>
               ))}
             </div>
@@ -84,6 +72,5 @@ export default function TherapySummaryPage() {
         </main>
       </div>
     </motion.div>
->>>>>>> 1884859f5c879475243aaf96b7b2d0d24093ed92
   );
 }

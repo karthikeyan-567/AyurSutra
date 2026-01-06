@@ -37,7 +37,7 @@ export default function PatientProfile() {
             </div>
 
             <div className="text-sm text-gray-600">
-              <p><strong className="text-green-700">Age:</strong> {p.age}</p>
+ aa             <p><strong className="text-green-700">Age:</strong> {p.age}</p>
               <p><strong className="text-green-700">Gender:</strong> {p.gender}</p>
               <p><strong className="text-green-700">Therapy:</strong> {p.therapy}</p>
               <p><strong className="text-green-700">Diagnosis:</strong> {p.diagnosis}</p>
