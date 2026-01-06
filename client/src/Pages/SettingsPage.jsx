@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../Components/Navbar";
-import Sidebar from "../Components/Sidebar";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 import { UserRound, Bell, Palette, Shield, LogOut, Download, FileText } from "lucide-react";
-import { ThemeContext } from "../Components/ThemeProvider";
+import { ThemeContext } from "../components/ThemeProvider";
 
 export default function SettingsPage() {
   const [theme, setTheme] = useState("light-green");
