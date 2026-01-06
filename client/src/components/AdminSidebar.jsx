@@ -22,7 +22,7 @@ export default function AdminSidebar() {
 
   const menu = [
     {
-      path: "/admin-dashboard",
+      path: "/admin",
       label: "Dashboard",
       icon: <LayoutDashboard size={18} />,
     },
@@ -30,7 +30,7 @@ export default function AdminSidebar() {
     { path: "/adclinics", label: "Clinics", icon: <Hospital size={18} /> },
     { path: "/doctors", label: "Doctors", icon: <UserCheck size={18} /> },
     {
-      path: "/seat-availability",
+      path: "/seatav",
       label: "Seat Availability",
       icon: <Armchair size={18} />,
     }, // fixed seat icon
