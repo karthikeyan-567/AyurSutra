@@ -5,7 +5,7 @@ export default function Navbar({ onMenuClick }) {
   return (
     <nav className="fixed top-0 left-0 right-0 h-16 bg-white border-b shadow-sm z-50 flex items-center justify-between px-6">
 
-      {/* LEFT: Brand */}
+      {/* LEFT: Brand + Menu */}
       <div className="flex items-center gap-3">
         <h1 className="text-xl font-semibold text-green-700 tracking-tight">
           AyurSutra
@@ -14,38 +14,52 @@ export default function Navbar({ onMenuClick }) {
 
       {/* CENTER */}
       <div className="w-[45%] text-center">
-        <marquee scrollamount="4" className="text-sm font-medium text-green-700">
-          🌿 Live OP Consultation • Panchakarma Therapy Tracking • Nadi Pulse Diagnosis
+        <marquee
+          scrollamount="4"
+          className="text-sm font-medium text-green-700 tracking-wide"
+        >
+          🌿 Live OP Consultation • Panchakarma Therapy Tracking Enabled • Nadi Pulse Diagnosis Available
         </marquee>
       </div>
 
-      {/* RIGHT */}
-      <div className="flex items-center gap-5">
+      {/* RIGHT: New Useful Elements */}
+      <div className="flex items-center font-md gap-5">
 
-        <Link to="/doc-task" className="flex items-center gap-1 text-sm text-gray-600 hover:text-green-700">
+        {/* Doctor Tasks Quick Access */}
+        <Link
+          to="/doc-task" 
+          className="flex items-center gap-1 text-sm text-gray-600 hover:text-green-700 transition font-medium"
+        >
           <ClipboardList size={16} className="text-green-700" />
           Doctor Tasks
         </Link>
 
-        <Link to="/therapysum" className="flex items-center gap-1 text-sm text-gray-600">
-          <ClipboardList size={16} className="text-green-700" />
+        {/* Therapy Summary */}
+       <Link to='/therapysum'> <div className="flex items-center gap-1 text-sm text-gray-600 font-medium">
+          <ClipboardList size={16} className="pointer text-green-700" />
           Therapy Summary
-        </Link>
+        </div>
+       </Link>
 
-        <Link to="/insights" className="flex items-center gap-1 text-sm text-gray-600">
-          <Sparkles size={16} className="text-green-700" />
+        {/* AI Insights (since you integrate AI later in AAFAMS project) */}
+       <Link to='/Insights'> <div className="flex items-center gap-1 text-sm text-gray-600 font-medium">
+          <Sparkles size={16} className="text-green-700  pointer" />
           AI Insights
-        </Link>
+        </div></Link>
 
-        <Link to="/feedback-doc" className="flex items-center gap-1 text-sm text-gray-600">
-          <ClipboardList size={16} className="text-green-700" />
+        {/* Recruiter/Patient Feedback Placeholder */}
+        <Link to='/feedback-doc'>
+        <div className="flex items-center gap-1 text-sm text-gray-600 font-medium">
+          <ClipboardList size={16} className="text-green-700 pointer" />
           Patient Feedback
+        </div>
         </Link>
 
-        <Link to="/doc-profile" className="flex items-center gap-2 text-green-700">
+        {/* Doctor/User Avatar */}
+        <Link to='/doc-profile'><div className="flex items-center gap-2 text-green-700">
           <User size={20} />
           <span className="text-sm font-medium text-gray-700">Doctor</span>
-        </Link>
+        </div></Link>
 
       </div>
     </nav>
