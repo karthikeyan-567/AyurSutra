@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { User } from "lucide-react";
-import AuthLayout from "../Components/AuthLayout";
+import AuthLayout from "../components/AuthLayout";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ export default function LoginPage() {
 
     if (role === "admin") navigate("/admin");
     else if (role === "doctor") navigate("/dashboard");
-    else navigate("/patient-dashboard");
+    else navigate("/health-assessment");
   };
 
   return (

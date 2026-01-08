@@ -1,7 +1,6 @@
 import { FileText, Eye } from "lucide-react";
-import Sidebar from "../Components/Sidebar";
-import Navbar from "../Components/Navbar";
-import PageTransition from "../components/PageTransition";
+import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
 export default function ReportsPage() {
   const reports = [
     { rid: 101, pid: 1, patient: "Arun Kumar", type: "Dosha Diagnosis", date: "02 Jan 2026" },
@@ -11,7 +10,7 @@ export default function ReportsPage() {
   ];
 
   return (
-    <PageTransition>
+ 
     <div>
       <Sidebar />
       <Navbar />
@@ -40,6 +39,6 @@ export default function ReportsPage() {
         </div>
       </main>
     </div>
-    </PageTransition>
+    
   );
 }

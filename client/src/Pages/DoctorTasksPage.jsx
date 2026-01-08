@@ -1,109 +1,100 @@
-import Navbar from "../Components/Navbar";
-import Sidebar from "../Components/Sidebar";
-import PageTransition from "../Components/PageTransition";
-import { Users, ClipboardList, Activity, FileText, CheckCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import DoctorSidebar from "../components/Sidebar";
+import DoctorNavbar from "../components/Navbar";
+import { CheckCircle, Clock } from "lucide-react";
 
 export default function DoctorTasksPage() {
-  const tasks = [
-    { id: 1, title: "Review patient therapy progress", status: "pending" },
-    { id: 2, title: "Approve new Panchakarma session plan", status: "completed" },
-    { id: 3, title: "Generate daily OP summary report", status: "in-progress" },
-    { id: 4, title: "Check Nadi diagnosis for follow-up patients", status: "pending" },
-  ];
+  const [tasks, setTasks] = useState([]);
+  const [filter, setFilter] = useState("all");
+  const [search, setSearch] = useState("");
 
-  const stats = {
-    attending: 4,
-    therapies: 12,
-    reports: 98,
-    followUps: 24,
+  useEffect(() => {
+    // Demo data (replace with API later)
+    setTasks([
+      { id: 1, title: "Check patient vitals", patient: "Swetha", status: "pending" },
+      { id: 2, title: "Review therapy progress", patient: "Mukil", status: "completed" },
+      { id: 3, title: "Update treatment plan", patient: "Arun", status: "pending" },
+    ]);
+  }, []);
+
+  const toggleStatus = (id) => {
+    setTasks(tasks.map(t =>
+      t.id === id
+        ? { ...t, status: t.status === "pending" ? "completed" : "pending" }
+        : t
+    ));
   };
 
+  const filteredTasks = tasks.filter(t => {
+    if (filter !== "all" && t.status !== filter) return false;
+    if (!t.title.toLowerCase().includes(search.toLowerCase()) &&
+        !t.patient.toLowerCase().includes(search.toLowerCase())) return false;
+    return true;
+  });
+
   return (
-    <PageTransition>
-      <div className="flex">
-        <Sidebar />
-        <div className="flex-1">
-          <Navbar onMenuClick={() => {}} />
+    <div className="min-h-screen">
+      <DoctorSidebar />
+      <DoctorNavbar doctorName="Karthikeyan J" />
 
-          <main className="pt-24 pl-72 pr-6 w-full">
-            {/* Patient attending count */}
-            <div className="flex items-center gap-2 mb-6 text-green-700 font-semibold text-lg">
-              <Users size={22} /> Patients Attending: {stats.attending}
-            </div>
+      <main className="ml-64 p-6 pt-20">
+        <h1 className="text-3xl font-semibold text-green-700 mb-6">Doctor Tasks</h1>
 
-            {/* Stat cards */}
-            <div className="grid grid-cols-4 gap-4 mb-6">
-              <div className="bg-white border rounded-2xl shadow-sm p-4 flex items-center gap-2">
-                <ClipboardList className="text-green-700" size={18} />
-                <div>
-                  <p className="text-xs text-gray-500">Therapies</p>
-                  <h3 className="text-lg font-semibold text-green-700">{stats.therapies}+</h3>
-                </div>
-              </div>
+        {/* Search */}
+        <input
+          type="text"
+          placeholder="Search tasks or patient..."
+          className="w-full p-3 rounded-xl border border-green-200 shadow-sm mb-5 focus:outline-green-400"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
 
-              <div className="bg-white border rounded-2xl shadow-sm p-4 flex items-center gap-2">
-                <Activity className="text-green-700" size={18} />
-                <div>
-                  <p className="text-xs text-gray-500">Active Therapies</p>
-                  <h3 className="text-lg font-semibold text-green-700">{stats.therapies}</h3>
-                </div>
-              </div>
-
-              <div className="bg-white border rounded-2xl shadow-sm p-4 flex items-center gap-2">
-                <FileText className="text-green-700" size={18} />
-                <div>
-                  <p className="text-xs text-gray-500">Reports Done</p>
-                  <h3 className="text-lg font-semibold text-green-700">{stats.reports}</h3>
-                </div>
-              </div>
-
-              <div className="bg-white border rounded-2xl shadow-sm p-4 flex items-center gap-2">
-                <CheckCircle className="text-green-700" size={18} />
-                <div>
-                  <p className="text-xs text-gray-500">Follow Ups</p>
-                  <h3 className="text-lg font-semibold text-green-700">{stats.followUps}</h3>
-                </div>
-              </div>
-            </div>
-
-            {/* Doctor tasks list */}
-            <div className="bg-white border rounded-2xl shadow-sm p-6">
-              <h2 className="text-2xl font-semibold text-green-700 mb-4 flex items-center gap-2">
-                <ClipboardList size={22} /> Today's Doctor Tasks
-              </h2>
-
-              <div className="space-y-3">
-                {tasks.map(task => (
-                  <motion.div
-                    key={task.id}
-                    whileHover={{ scale: 1.01 }}
-                    className="flex justify-between items-center border-b pb-2"
-                  >
-                    <p className="text-sm font-medium text-gray-700 flex items-center gap-2">
-                      <ClipboardList size={16} className="text-green-700" /> {task.title}
-                    </p>
-
-                    <span
-                      className={`text-[10px] font-semibold px-2 py-1 rounded-lg ${
-                        task.status === "completed"
-                          ? "bg-green-100 text-green-700"
-                          : "bg-gray-100 text-gray-600"
-                      }`}
-                    >
-                      {task.status.toUpperCase()}
-                    </span>
-                  </motion.div>
-                ))}
-
-                {tasks.length === 0 && (
-                  <p className="text-gray-400 text-center">No tasks available today</p>
-                )}
-              </div>
-            </div>
-          </main>
+        {/* Filters */}
+        <div className="flex gap-3 mb-6">
+          {["all", "pending", "completed"].map(f => (
+            <button
+              key={f}
+              onClick={() => setFilter(f)}
+              className={`px-4 py-2 rounded-xl capitalize transition ${
+                filter === f ? "bg-green-200 text-green-700" : "bg-white hover:bg-green-100"
+              }`}
+            >
+              {f}
+            </button>
+          ))}
         </div>
-      </div>
-    </PageTransition>
+
+        {/* Task List */}
+        <div className="grid gap-4">
+          {filteredTasks.length === 0 && (
+            <p className="text-gray-600 text-center mt-10">No tasks found</p>
+          )}
+
+          {filteredTasks.map(task => (
+            <div
+              key={task.id}
+              className="bg-white p-4 rounded-2xl border border-green-200 shadow-sm flex justify-between items-center"
+            >
+              <div>
+                <h2 className="text-lg font-semibold text-gray-800">{task.title}</h2>
+                <p className="text-sm text-gray-600">Patient: {task.patient}</p>
+                <div className="flex items-center gap-1 mt-2 text-xs text-gray-500">
+                  {task.status === "pending" ? <Clock size={14}/> : <CheckCircle size={14}/>}
+                  {task.status}
+                </div>
+              </div>
+
+              <button
+                onClick={() => toggleStatus(task.id)}
+                className="bg-green-600 text-white px-4 py-2 rounded-xl flex items-center gap-1 hover:bg-green-700"
+              >
+                <CheckCircle size={16}/> 
+                {task.status === "pending" ? "Complete" : "Undo"}
+              </button>
+            </div>
+          ))}
+        </div>
+      </main>
+    </div>
   );
 }

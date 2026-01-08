@@ -1,58 +1,93 @@
-import { motion } from "framer-motion";
-import Navbar from "../Components/Navbar";
-import Sidebar from "../Components/Sidebar";
-import { MessageCircle, CheckCircle, AlertCircle } from "lucide-react";
+import { useState } from "react";
+import DoctorSidebar from "../components/Sidebar";
+import DoctorNavbar from "../components/Navbar";
 
-export default function PatientFeedback() {
-  const feedbacks = [
-    { id: 1, patient: "Meera S", msg: "Therapy was relaxing and effective 🌿", status: "positive" },
-    { id: 2, patient: "Swetha R", msg: "Nadi diagnosis felt accurate 🩺", status: "positive" },
-    { id: 3, patient: "Arun Kumar", msg: "Mild headache after session", status: "attention" },
-  ];
+export default function DoctorFeedbackPage() {
+  const [feedbacks, setFeedbacks] = useState([]);
+  const [patient, setPatient] = useState("");
+  const [rating, setRating] = useState(5);
+  const [comment, setComment] = useState("");
+
+  const submitFeedback = () => {
+    if (!patient.trim() || !comment.trim()) return;
+    const newFB = {
+      id: Date.now(),
+      patient,
+      rating,
+      comment,
+      date: new Date().toLocaleDateString()
+    };
+    setFeedbacks([newFB, ...feedbacks]);
+    setPatient("");
+    setRating(5);
+    setComment("");
+  };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.35, ease: "easeOut" }}
-      className="flex"
-    >
-      <Sidebar />
+    <div className="min-h-screen ]">
+      <DoctorSidebar />
+      <DoctorNavbar doctorName="Karthikeyan J" />
 
-      <div className="flex-1">
-        <Navbar />
+      <main className="ml-64 p-6 pt-20">
+        <h1 className="text-3xl font-semibold text-green-700 mb-6">Doctor Feedback</h1>
 
-        <main className="pt-24 pl-72 pr-6 bg-gray-50 min-h-screen">
-          <div className="flex items-center gap-2 text-green-700 text-2xl font-semibold mb-6">
-            <MessageCircle size={24} />
-            Patient Feedback
-          </div>
+        {/* Form Card */}
+        <div className="bg-white p-5 rounded-2xl border border-green-200 shadow-sm mb-5">
+          <input
+            type="text"
+            placeholder="Patient name..."
+            className="w-full p-3 rounded-xl border border-green-200 focus:outline-green-400 text-sm mb-3"
+            value={patient}
+            onChange={e => setPatient(e.target.value)}
+          />
 
-          <div className="bg-white border rounded-2xl shadow-sm p-6 space-y-4 max-w-3xl">
-            {feedbacks.map(f => (
-              <motion.div
-                key={f.id}
-                whileHover={{ scale: 1.01 }}
-                className="border-b last:border-none pb-3"
-              >
-                <div className="flex justify-between items-center">
-                  <h3 className="text-sm font-semibold text-gray-700">
-                    {f.patient}
-                  </h3>
+          {/* Rating */}
+          <label className="text-sm text-gray-600 font-medium">Rating: {rating}/5</label>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            value={rating}
+            onChange={e => setRating(e.target.value)}
+            className="w-full mb-3 accent-green-600"
+          />
 
-                  {f.status === "positive" ? (
-                    <CheckCircle size={14} className="text-green-600" />
-                  ) : (
-                    <AlertCircle size={14} className="text-yellow-600" />
-                  )}
-                </div>
+          <textarea
+            placeholder="Enter feedback about therapy or patient progress..."
+            className="w-full p-3 rounded-xl border border-green-200 focus:outline-green-400 text-sm"
+            value={comment}
+            onChange={e => setComment(e.target.value)}
+          />
 
-                <p className="text-sm text-gray-600 mt-1">{f.msg}</p>
-              </motion.div>
-            ))}
-          </div>
-        </main>
-      </div>
-    </motion.div>
+          <button
+            onClick={submitFeedback}
+            className="mt-3 bg-green-600 text-white px-4 py-2 rounded-xl text-sm hover:bg-green-700"
+          >
+            Submit Feedback
+          </button>
+        </div>
+
+        {/* Feedback List */}
+        <div className="grid gap-3">
+          {feedbacks.length === 0 && (
+            <p className="text-center text-gray-500 mt-10 text-sm">No feedback submitted yet</p>
+          )}
+
+          {feedbacks.map(fb => (
+            <div
+              key={fb.id}
+              className="bg-white p-4 rounded-xl border border-green-200 shadow-sm text-sm text-gray-700"
+            >
+              <div className="flex justify-between items-center mb-1">
+                <b className="text-green-700">{fb.patient}</b>
+                <span className="text-xs text-gray-500">{fb.date}</span>
+              </div>
+              <p className="text-xs text-yellow-600 font-semibold mb-2">⭐ {fb.rating}/5</p>
+              <p>{fb.comment}</p>
+            </div>
+          ))}
+        </div>
+      </main>
+    </div>
   );
 }

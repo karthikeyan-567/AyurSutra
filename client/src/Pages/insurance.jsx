@@ -1,6 +1,6 @@
 import PatientSideBar from "../components/PatientSideBar";
 import PatientNavBar from "../components/PatientNavBar";
-import "../styles/Insurance.css";
+import "../styles/insurance.css";
 
 export default function Insurance() {
   return (

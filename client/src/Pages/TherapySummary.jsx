@@ -1,76 +1,41 @@
-import { motion } from "framer-motion";
-import Navbar from "../Components/Navbar";
-import Sidebar from "../Components/Sidebar";
-import { Leaf, BarChart2 } from "lucide-react";
+import { useState, useEffect } from "react";
+import DoctorSidebar from "../components/Sidebar";
+import DoctorNavbar from "../components/Navbar";
 
-export default function TherapySummary() {
-  const therapies = [
-    { name: "Shirodhara", count: 14, trend: "+12%" },
-    { name: "Abhyanga Massage", count: 22, trend: "+8%" },
-    { name: "Vasti", count: 12, trend: "+5%" },
-    { name: "Panchakarma Detox", count: 31, trend: "+20%" },
-  ];
+export default function TherapySummaryPage() {
+  const [sessions, setSessions] = useState([]);
+
+  useEffect(() => {
+    setSessions([
+      { id: 1, patient: "Swetha", therapy: "Panchakarma", date: "2026-01-03", notes: "Good progress", outcome: "Improved sleep" },
+      { id: 2, patient: "Mukil", therapy: "Herbal Steam", date: "2026-01-04", notes: "Moderate response", outcome: "Reduced stress" }
+    ]);
+  }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.35, ease: "easeOut" }}
-      className="flex"
-    >
-      <Sidebar />
+    <div className="min-h-screen">
+      <DoctorSidebar />
+      <DoctorNavbar doctorName="Karthikeyan J" />
 
-      <div className="flex-1">
-        <Navbar />
+      <main className="ml-64 p-6 pt-20">
+        <h1 className="text-3xl font-semibold text-green-700 mb-6">Therapy Summary</h1>
 
-        <main className="pt-24 pl-72 pr-6 bg-gray-50 min-h-screen">
-          <div className="flex items-center gap-2 text-green-700 text-2xl font-semibold mb-6">
-            <Leaf size={24} />
-            Therapy Summary
-          </div>
-
-          {/* Stats row */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            {therapies.map(t => (
-              <div
-                key={t.name}
-                className="bg-white border rounded-2xl shadow-sm p-4 flex items-center gap-3"
-              >
-                <Leaf className="text-green-700" size={18} />
-                <div>
-                  <p className="text-xs text-gray-500">{t.name}</p>
-                  <h3 className="text-lg font-semibold text-green-700">
-                    {t.count}
-                  </h3>
-                  <p className="text-[11px] text-green-600">{t.trend}</p>
-                </div>
+        <div className="grid gap-4">
+          {sessions.map(s => (
+            <details key={s.id} className="bg-white p-4 rounded-2xl border border-green-200 shadow-sm">
+              <summary className="cursor-pointer font-semibold text-gray-800">
+                {s.therapy} — {s.patient} ({s.date})
+              </summary>
+              <div className="mt-3 text-sm text-gray-600 space-y-2">
+                <p><b>Patient:</b> {s.patient}</p>
+                <p><b>Date:</b> {s.date}</p>
+                <p><b>Notes:</b> {s.notes}</p>
+                <p><b>Outcome:</b> {s.outcome}</p>
               </div>
-            ))}
-          </div>
-
-          {/* Therapy list */}
-          <div className="bg-white border rounded-2xl shadow-sm p-6 max-w-3xl">
-            <div className="flex items-center gap-2 font-semibold text-green-700 mb-4">
-              <BarChart2 size={18} />
-              Most Performed Therapies
-            </div>
-
-            <div className="space-y-3 text-sm text-gray-600">
-              {therapies.map(t => (
-                <div
-                  key={t.name}
-                  className="flex justify-between border-b last:border-none pb-2"
-                >
-                  <span>{t.name}</span>
-                  <span className="font-medium text-green-700">
-                    {t.count} sessions
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </main>
-      </div>
-    </motion.div>
+            </details>
+          ))}
+        </div>
+      </main>
+    </div>
   );
 }

@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Users, Activity, Heart, Stethoscope, Search } from "lucide-react";
-import PageTransition from "../Components/PageTransition";
-import Navbar from "../Components/Navbar";
-import Sidebar from "../Components/Sidebar";
-import PatientCard from "../Components/PatientCard";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
+import PatientCard from "../components/PatientCard";
 
 export default function PatientPage() {
   const [search, setSearch] = useState("");
@@ -20,7 +19,7 @@ export default function PatientPage() {
   );
 
   return (
-    <PageTransition>
+  
         
       <div>
         
@@ -65,7 +64,7 @@ export default function PatientPage() {
           )}
         </main>
       </div>
-    </PageTransition>
+   
   );
 }
 

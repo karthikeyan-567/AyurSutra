@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-
+import { ThemeProvider } from "./components/ThemeProvider";
 // Patient Pages
 import PatientDashBoard from "./Pages/PatientDashBoard";
 import Appointments from "./Pages/Appointments";
@@ -12,7 +12,7 @@ import Progress from "./Pages/Progress";
 import SeatAvailability from "./Pages/SeatAvailability";
 import LandingPage from "./Pages/LandingPage";  
 import Insurance from "./Pages/insurance";
-
+import Questionnaire from "./Pages/Questionnaire";
 // Doctor / Admin Pages
 import DashboardPage from "./Pages/DashboardPage";
 import PatientPage from "./Pages/PatientPage";
@@ -28,6 +28,14 @@ import AdminDashboard from "./Pages/AdminDashboard";
 import AdminPatients from "./Pages/AdminPatients";
 import AdminReports from "./Pages/AdminReports";
 import AdminAppointments from "./Pages/AdminAppointments";
+import ClinicsAdmin from "./Pages/ClinicsAdmin";
+import Doctors from "./Pages/Doctors";
+import Seatav from "./Pages/Seatav";
+import AccessControl from "./Pages/AcessControl";
+import Notifications from "./Pages/Notification";
+// import AdminSettings from "./Pages/AdminSettings";  
+// import AdminSettings from "./Pages/AdminSettings";
+
 
 // Auth & AI
 import LoginPage from "./Pages/LoginPage";
@@ -35,13 +43,14 @@ import RegisterPage from "./Pages/RegisterPage";
 import AIInsights from "./Pages/AIInsights";
 import TherapySummary from "./Pages/TherapySummary";
 import PatientFeedback from "./Pages/PatientFeedback";
-
+import DoctorSeat from "./Pages/DoctorSeat";
 // Animation
-import PageTransition from "./Components/PageTransition";
 
 export default function App() {
   return (
-    <PageTransition>
+     
+   
+       <ThemeProvider>
       <Routes>
 
         {/* Auth */}
@@ -62,12 +71,20 @@ export default function App() {
         <Route path="/doc-profile" element={<DoctorProfilePage />} />
         <Route path="/doc-task" element={<DoctorTasksPage />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/doc-availability" element={<DoctorSeat />} />
 
         {/* Admin */}
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/admin/patients" element={<AdminPatients />} />
         <Route path="/admin/reports" element={<AdminReports />} />
         <Route path="/admin/appointments" element={<AdminAppointments />} />
+  <Route path="/adclinics" element={<ClinicsAdmin/>}/>
+  <Route path="/doctors" element={<Doctors/>}/>
+  <Route path="/seatav" element={<Seatav/>}/>
+  <Route path="/access-control" element={<AccessControl/>}/>
+  <Route path="/notifications" element={<Notifications/>}/>
+  {/* <Route path="/ad-settings" element={<AdminSettings/>}/> */}
+
 
         {/* AI */}
         <Route path="/therapysum" element={<TherapySummary />} />
@@ -85,8 +102,11 @@ export default function App() {
         <Route path="/progress" element={<Progress />} />
         <Route path="/seat-availability" element={<SeatAvailability />} />
         <Route path="/insurance" element={<Insurance />} />
-        
+        <Route path="/health-assessment" element={<Questionnaire />} />
+
       </Routes>
-    </PageTransition>
+      </ThemeProvider>
+
+    
   );
 }

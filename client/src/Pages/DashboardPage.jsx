@@ -1,14 +1,12 @@
-import Navbar from "../Components/Navbar";
-import Sidebar from "../Components/Sidebar";
-import PageTransition from "../components/PageTransition";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 import DashboardContent from "../components/DashboardContent";
-import TabletAlertWidget from "../components/TabletAlertWidget";
 
 
 
 export default function DashboardPage() {
   return (
-  <PageTransition>
+  
     <div className="min-h-screen bg-gray-50">
       <Sidebar />
       <Navbar />
@@ -18,7 +16,7 @@ export default function DashboardPage() {
         <DashboardContent></DashboardContent>
       
     </div>
-    </PageTransition>
+
     
   );
 }

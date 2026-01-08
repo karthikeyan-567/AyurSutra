@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Calendar, Clock, User, CheckCircle, Filter } from "lucide-react";
-import Navbar from "../Components/Navbar";
-import Sidebar from "../Components/Sidebar";
-import PageTransition from "../components/PageTransition";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
 export default function AppointmentsPage() {
   const [filter, setFilter] = useState("All");
 
@@ -16,7 +15,7 @@ export default function AppointmentsPage() {
   const filtered = filter === "All" ? appointments : appointments.filter(a => a.status === filter);
 
   return (
-    <PageTransition>
+   
     <div>
       <Sidebar />
       <Navbar />
@@ -63,7 +62,7 @@ export default function AppointmentsPage() {
         </div>
       </main>
     </div>
-    </PageTransition>
+    
   );
 }
 
