@@ -16,7 +16,7 @@ export default function LoginPage() {
 
     if (role === "admin") navigate("/admin");
     else if (role === "doctor") navigate("/dashboard");
-    else navigate("/patient-dashboard");
+    else navigate("/health-assessment");
   };
 
   return (
