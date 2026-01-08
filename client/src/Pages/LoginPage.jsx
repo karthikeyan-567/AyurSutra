@@ -15,7 +15,7 @@ export default function LoginPage() {
     localStorage.setItem("authRole", role);
 
     if (role === "admin") navigate("/admin");
-    else if (role === "doctor") navigate("/");
+    else if (role === "doctor") navigate("/dashboard");
     else navigate("/patient-dashboard");
   };
 
