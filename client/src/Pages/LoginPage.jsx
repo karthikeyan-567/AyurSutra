@@ -2,21 +2,28 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { User } from "lucide-react";
 import AuthLayout from "../components/AuthLayout";
+import { auth } from "../services/api";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [role, setRole] = useState("patient"); // default
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     if (!email || !pass) return;
+    setError("");
+    try {
+      const data = await auth.login(email, pass);
+      localStorage.setItem("authRole", data.user.role.toLowerCase());
 
-    localStorage.setItem("authRole", role);
-
-    if (role === "admin") navigate("/admin");
-    else if (role === "doctor") navigate("/dashboard");
-    else navigate("/patient-dashboard");
+      if (data.user.role === "ADMIN") navigate("/admin");
+      else if (data.user.role === "DOCTOR") navigate("/dashboard");
+      else navigate("/patient-dashboard");
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
@@ -26,9 +33,9 @@ export default function LoginPage() {
         className="w-full border rounded-xl px-3 py-2 text-sm focus:outline-green-700 text-gray-600"
         value={role}
       >
-        <option value="patient">Patient</option>
-        <option value="doctor">Doctor</option>
-        <option value="admin">Admin</option>
+        <option value="PATIENT">Patient</option>
+        <option value="DOCTOR">Doctor</option>
+        <option value="ADMIN">Admin</option>
       </select>
 
       <input
@@ -46,6 +53,8 @@ export default function LoginPage() {
         onChange={(e) => setPass(e.target.value)}
         className="w-full border rounded-xl px-3 py-2 text-sm focus:outline-green-700"
       />
+
+      {error && <p className="text-red-500 text-xs text-center font-medium">{error}</p>}
 
       <button
         onClick={handleLogin}

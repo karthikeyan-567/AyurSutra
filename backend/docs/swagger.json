@@ -1,0 +1,34 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "AyurSutra API Documentation",
+    "version": "1.0.0",
+    "description": "API for Ayurvedic Healthcare & E-Ticketing"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:4000/api",
+      "description": "Local server"
+    }
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "summary": "Register a new user",
+        "tags": ["Auth"],
+        "responses": {
+          "201": { "description": "User registered" }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Login user",
+        "tags": ["Auth"],
+        "responses": {
+          "200": { "description": "Login successful" }
+        }
+      }
+    }
+  }
+}

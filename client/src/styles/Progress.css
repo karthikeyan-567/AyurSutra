@@ -201,13 +201,94 @@
 /* =========================
    RESPONSIVE
 ========================= */
-@media (max-width: 768px) {
+@media (max-width: 1440px) {
+  .progress-container {
+    padding: 28px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .progress-container {
+    padding: 20px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
   .task-row {
-    grid-template-columns: 1fr;
-    gap: 6px;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .bar-chart {
-    gap: 12px;
+    gap: 14px;
   }
 }
+
+@media (max-width: 768px) {
+  .progress-container {
+    padding: 16px;
+  }
+
+  .page-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .task-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .task-card {
+    padding: 14px;
+  }
+
+  .bar-chart {
+    gap: 10px;
+  }
+
+  .chart-bar {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-container {
+    padding: 12px;
+  }
+
+  .page-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .task-row {
+    gap: 10px;
+  }
+
+  .task-card {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .task-title {
+    font-size: 14px;
+  }
+
+  .task-value {
+    font-size: 13px;
+  }
+
+  .btn-primary {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .bar-chart {
+    gap: 8px;
+  }
+
+  .chart-bar {
+    font-size: 11px;
+  }

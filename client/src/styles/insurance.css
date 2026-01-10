@@ -166,16 +166,103 @@
 /* ================================
    RESPONSIVE
 ================================ */
+@media (max-width: 1440px) {
+  .insurance-wrapper {
+    padding: 28px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .insurance-wrapper {
+    padding: 20px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .insurance-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .covered-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 900px) {
+  .insurance-wrapper {
+    padding: 16px;
+  }
+
+  .page-title {
+    font-size: 20px;
+  }
+
   .insurance-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .covered-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
-  .insurance-wrapper {
-    padding: 20px;
+  .insurance-card {
+    padding: 14px;
+  }
+
+  .card-title {
+    font-size: 14px;
+  }
+
+  .card-desc {
+    font-size: 12px;
   }
 }
+
+@media (max-width: 480px) {
+  .insurance-wrapper {
+    padding: 12px;
+  }
+
+  .page-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .page-sub {
+    font-size: 12px;
+  }
+
+  .insurance-grid {
+    gap: 10px;
+  }
+
+  .covered-grid {
+    gap: 10px;
+  }
+
+  .insurance-card {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .card-title {
+    font-size: 13px;
+  }
+
+  .card-desc {
+    font-size: 11px;
+  }
+
+  .coverage-item {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .coverage-badge {
+    padding: 4px 8px;
+    font-size: 10px;
+  }

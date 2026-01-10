@@ -1,16 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Calendar, Clock, User, CheckCircle, Filter } from "lucide-react";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
+import { api } from "../services/api";
+
 export default function AppointmentsPage() {
   const [filter, setFilter] = useState("All");
+  const [appointments, setAppointments] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  const appointments = [
-    { id: 1, name: "Arun Kumar", age: 34, gender: "Male", therapy: "Shirodhara", diagnosis: "Vata imbalance", time: "09:30 AM", date: "05 Jan 2026", status: "Confirmed" },
-    { id: 2, name: "Meena S", age: 29, gender: "Female", therapy: "Abhyanga Massage", diagnosis: "Pitta imbalance", time: "11:00 AM", date: "05 Jan 2026", status: "Completed" },
-    { id: 3, name: "Kavin Raj", age: 42, gender: "Male", therapy: "Vasti", diagnosis: "Kapha imbalance", time: "02:15 PM", date: "06 Jan 2026", status: "Confirmed" },
-    { id: 4, name: "Swetha R", age: 31, gender: "Female", therapy: "Panchakarma Detox", diagnosis: "Vata-Pitta imbalance", time: "07:00 AM", date: "07 Jan 2026", status: "Pending" },
-  ];
+  useEffect(() => {
+    fetchAppointments();
+  }, []);
+
+  const fetchAppointments = async () => {
+    setLoading(true);
+    try {
+      const data = await api.get('/appointments/my?role=doctor');
+      setAppointments(data.appointments);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const filtered = filter === "All" ? appointments : appointments.filter(a => a.status === filter);
 
@@ -34,29 +47,31 @@ export default function AppointmentsPage() {
               onChange={e => setFilter(e.target.value)}
               className="border rounded-xl pl-7 pr-3 py-1 text-sm focus:outline-green-700 text-gray-600"
             >
-              <option value="All">All</option>
-              <option value="Confirmed">Confirmed</option>
-              <option value="Pending">Pending</option>
-              <option value="Completed">Completed</option>
+              <option value="All">All Status</option>
+              <option value="BOOKED">Booked</option>
+              <option value="COMPLETED">Completed</option>
+              <option value="CANCELLED">Cancelled</option>
             </select>
           </div>
         </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-          <StatCard title="Total Patients" value={appointments.length} icon={<User />} />
-          <StatCard title="Therapies Today" value="8" icon={<ActivityIcon />} />
-          <StatCard title="Pending Checkups" value="2" icon={<Clock />} />
-          <StatCard title="Completed Today" value="5" icon={<CheckCircle />} />
+          <StatCard title="Total Appointments" value={appointments.length} icon={<User />} />
+          <StatCard title="Booked" value={appointments.filter(a => a.status === 'BOOKED').length} icon={<ActivityIcon />} />
+          <StatCard title="Completed" value={appointments.filter(a => a.status === 'COMPLETED').length} icon={<Clock />} />
+          <StatCard title="Cancelled" value={appointments.filter(a => a.status === 'CANCELLED').length} icon={<CheckCircle />} />
         </div>
 
         {/* Appointments List */}
         <div className="grid gap-4">
-          {filtered.map(a => (
-            <AppointmentCard key={a.id} appointment={a} />
+          {loading ? (
+             <div className="text-center py-10">Loading...</div>
+          ) : filtered.map(a => (
+            <AppointmentCard key={a._id} appointment={a} />
           ))}
 
-          {filtered.length === 0 && (
+          {!loading && filtered.length === 0 && (
             <div className="text-gray-400 text-center mt-10">No Appointments</div>
           )}
         </div>
@@ -90,8 +105,10 @@ function AppointmentCard({ appointment }) {
 
       {/* Doctor attended tag */}
       <div className="flex justify-end mb-3">
-        <span className="bg-green-700 text-white text-[11px] font-medium px-3 py-1 rounded-lg flex items-center gap-1">
-          <CheckCircle size={12}/> Doctor Attended
+        <span className={`text-[11px] font-medium px-3 py-1 rounded-lg flex items-center gap-1 ${
+          appointment.status === 'COMPLETED' ? 'bg-green-700 text-white' : 'bg-gray-100 text-gray-600'
+        }`}>
+          <CheckCircle size={12}/> {appointment.status}
         </span>
       </div>
 
@@ -101,26 +118,17 @@ function AppointmentCard({ appointment }) {
           <User size={24}/>
         </div>
         <div>
-          <h3 className="text-lg font-semibold text-green-700">{appointment.name}</h3>
-          <p className="text-xs text-gray-500">Age: {appointment.age} • {appointment.gender}</p>
+          <h3 className="text-lg font-semibold text-green-700">{appointment.patient?.name}</h3>
+          <p className="text-xs text-gray-500">{appointment.patient?.email}</p>
         </div>
       </div>
 
       {/* Appointment info */}
       <div className="text-sm text-gray-700 space-y-1">
-        <p className="flex items-center gap-2"><Clock size={14}/> <strong>Time:</strong> {appointment.time}</p>
-        <p className="flex items-center gap-2"><Calendar size={14}/> <strong>Date:</strong> {appointment.date}</p>
-        <p><strong className="text-green-700">Therapy:</strong> {appointment.therapy}</p>
-        <p><strong className="text-green-700">Diagnosis:</strong> {appointment.diagnosis}</p>
-        <p className="mt-2">
-          <span className={`px-3 py-1 rounded-full text-xs ${
-            appointment.status === "Pending" ? "bg-yellow-100 text-yellow-700" :
-            appointment.status === "Completed" ? "bg-green-100 text-green-700" :
-            "bg-green-50 text-green-700 border"
-          }`}>
-            {appointment.status}
-          </span>
-        </p>
+        <p className="flex items-center gap-2"><Clock size={14}/> <strong>Time:</strong> {appointment.appointmentTime}</p>
+        <p className="flex items-center gap-2"><Calendar size={14}/> <strong>Date:</strong> {new Date(appointment.appointmentDate).toLocaleDateString()}</p>
+        <p><strong className="text-green-700">Clinic:</strong> {appointment.clinic?.clinicName}</p>
+        <p><strong className="text-green-700">Address:</strong> {appointment.clinic?.address}</p>
       </div>
 
       {/* View profile */}

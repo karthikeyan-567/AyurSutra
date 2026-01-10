@@ -9,11 +9,12 @@ import {
   User,
   Settings,
   Bed,
-  ShieldCheck
-  
+  ShieldCheck,
+  LogOut
 } from "lucide-react";
 
 import "../styles/PatientSideBar.css";
+import { auth } from "../services/api";
 
 export default function PatientSideBar() {
   return (
@@ -45,10 +46,9 @@ export default function PatientSideBar() {
           <TrendingUp size={20} /> Progress & Reports
         </NavLink>
     
-<NavLink to="/insurance">
-  <ShieldCheck size={20} /> Insurance
-</NavLink>
-
+        <NavLink to="/insurance">
+          <ShieldCheck size={20} /> Insurance
+        </NavLink>
 
         <NavLink to="/profile-pap">
           <User size={20} /> Profile
@@ -58,6 +58,28 @@ export default function PatientSideBar() {
           <Settings size={20} /> Settings
         </NavLink>
 
+        <button
+          onClick={() => {
+            auth.logout();
+            window.location.href = "/login";
+          }}
+          className="logout-btn"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            padding: '12px 18px',
+            color: '#ef4444',
+            background: 'none',
+            border: 'none',
+            fontSize: '15px',
+            fontWeight: '500',
+            cursor: 'pointer',
+            marginTop: 'auto'
+          }}
+        >
+          <LogOut size={20} /> Logout
+        </button>
       </nav>
     </aside>
   );

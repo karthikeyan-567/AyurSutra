@@ -30,7 +30,7 @@ export default function LandingPage() {
             transforming fragmented therapy centres into intelligent,
             scalable healing ecosystems.
           </p>
-          <button className="cta-btn">Explore Therapies</button>
+        <a href="#therapy">  <button className="cta-btn">Explore Therapies</button></a>
           <NavLink to="/register">
           <button className="cta-outline">Get Started</button></NavLink>
         </div>
@@ -47,6 +47,7 @@ export default function LandingPage() {
       </section>
 
       {/* THERAPIES */}
+      <h1 id="therapy"></h1>
       <Therapy
         img="/shirodhara_1.png"
         title="Shirodhara"

@@ -79,3 +79,102 @@
   align-items: center;
   justify-content: center;
 }
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .patient-navbar {
+    padding: 0 20px;
+  }
+
+  .navbar-left {
+    gap: 10px;
+  }
+
+  .status-pill {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+
+  .next-time {
+    font-size: 12px;
+  }
+
+  .navbar-right {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .patient-navbar {
+    padding: 0 16px;
+    height: 60px;
+  }
+
+  .navbar-left {
+    gap: 8px;
+    flex: 1;
+  }
+
+  .status-pill {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .next-time {
+    display: none;
+  }
+
+  .navbar-right {
+    gap: 12px;
+  }
+
+  .bell {
+    font-size: 18px;
+  }
+
+  .badge {
+    font-size: 10px;
+    padding: 1px 4px;
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .patient-navbar {
+    padding: 0 12px;
+    height: 56px;
+  }
+
+  .navbar-left {
+    gap: 6px;
+  }
+
+  .status-pill {
+    display: none;
+  }
+
+  .navbar-right {
+    gap: 10px;
+  }
+
+  .bell {
+    font-size: 16px;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+}

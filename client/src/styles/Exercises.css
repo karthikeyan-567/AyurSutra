@@ -286,16 +286,137 @@
 /* =============================
    RESPONSIVE
 ============================= */
+
+@media (max-width: 1440px) {
+  .exercises-container {
+    padding: 28px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .exercises-container {
+    padding: 20px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .search-box {
+    max-width: 400px;
+  }
+
+  .task-card {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .task-image {
+    width: 140px;
+    height: 140px;
+  }
+}
+
 @media (max-width: 768px) {
+  .exercises-container {
+    padding: 16px;
+  }
+
+  .page-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .search-box {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .task-card {
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
+    gap: 12px;
+    padding: 14px;
   }
 
   .task-right {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .task-image {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+  }
+
+  .task-title {
+    font-size: 16px;
+  }
+
+  .task-desc {
+    font-size: 13px;
+  }
+
+  .modal {
+    width: 90%;
+    max-height: 80vh;
+    padding: 20px;
+  }
+
+  .modal h2 {
+    font-size: 20px;
+  }
+
+  .modal ul {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .exercises-container {
+    padding: 12px;
+  }
+
+  .page-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .task-card {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .task-image {
+    max-height: 150px;
+  }
+
+  .task-title {
+    font-size: 14px;
+  }
+
+  .task-desc {
+    font-size: 12px;
+  }
+
+  .task-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .modal {
+    width: 95%;
+    padding: 16px;
+  }
+
+  .modal h2 {
+    font-size: 18px;
+  }
+
+  .modal ul {
+    padding-left: 16px;
+    font-size: 12px;
   }
 
   .therapy-filter-bar {

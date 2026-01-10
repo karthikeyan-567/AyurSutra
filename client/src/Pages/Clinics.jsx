@@ -1,37 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PatientSideBar from "../components/PatientSideBar";
 import PatientNavBar from "../components/PatientNavBar";
 import "../styles/Clinics.css";
-
-const clinicsData = [
-  {
-    name: "AyurSutra Wellness Center",
-    location: "2 km away",
-    open: "9:00 AM",
-    close: "7:00 PM",
-    therapies: ["Abhyanga", "Shirodhara", "Panchakarma"],
-    therapists: ["Dr. Rajesh Kumar", "Dr. Meera Patel"],
-    slots: ["9:00 AM", "11:00 AM", "2:00 PM", "4:00 PM"]
-  },
-  {
-    name: "Green Leaf Ayurveda Clinic",
-    location: "4 km away",
-    open: "10:00 AM",
-    close: "6:00 PM",
-    therapies: ["Udvartana", "Nasya"],
-    therapists: ["Dr. Anitha", "Dr. Prakash"],
-    slots: ["10:00 AM", "1:00 PM", "3:00 PM"]
-  },
-  {
-    name: "Sanjeevani Ayurveda Hospital",
-    location: "6 km away",
-    open: "8:00 AM",
-    close: "8:00 PM",
-    therapies: ["Pizhichil", "Panchakarma"],
-    therapists: ["Dr. Suresh"],
-    slots: ["8:00 AM", "12:00 PM", "5:00 PM"]
-  }
-];
+import { api } from "../services/api";
 
 const therapyOptions = [
   "All",
@@ -44,37 +15,57 @@ const therapyOptions = [
 ];
 
 export default function Clinics() {
+  const [clinics, setClinics] = useState([]);
   const [showAll, setShowAll] = useState(false);
   const [search, setSearch] = useState("");
   const [selectedTherapy, setSelectedTherapy] = useState("All");
 
   const [selectedClinic, setSelectedClinic] = useState(null);
-  const [patientName, setPatientName] = useState("");
-  const [therapy, setTherapy] = useState("");
-  const [therapist, setTherapist] = useState("");
-  const [slot, setSlot] = useState("");
+  const [appointmentDate, setAppointmentDate] = useState("");
+  const [appointmentTime, setAppointmentTime] = useState("");
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  /* 🔹 FILTER LOGIC */
-  const isFiltering = search !== "" || selectedTherapy !== "All";
+  useEffect(() => {
+    fetchClinics();
+  }, [search, selectedTherapy]);
 
-  const filteredClinics = clinicsData.filter((clinic) => {
-    const matchesSearch = clinic.name
-      .toLowerCase()
-      .includes(search.toLowerCase());
+  const fetchClinics = async () => {
+    setLoading(true);
+    try {
+      const query = new URLSearchParams();
+      if (search) query.append('clinicName', search);
+      // Backend doesn't support therapy filter in queryClinics yet, but we'll add it if needed
+      const data = await api.get(`/clinics?${query.toString()}`);
+      setClinics(data.clinics);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    const matchesTherapy =
-      selectedTherapy === "All" ||
-      clinic.therapies.includes(selectedTherapy);
+  const handleBooking = async () => {
+    if (!selectedClinic || !appointmentDate || !appointmentTime) return;
+    setLoading(true);
+    try {
+      await api.post('/appointments/book', {
+        clinic: selectedClinic._id,
+        appointmentDate,
+        appointmentTime,
+      });
+      setSelectedClinic(null);
+      setBookingConfirmed(true);
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    return matchesSearch && matchesTherapy;
-  });
-
-  const visibleClinics = isFiltering
-    ? filteredClinics
-    : showAll
-    ? clinicsData
-    : clinicsData.slice(0, 2);
+  /* 🔹 FILTER LOGIC (Keep local filter for now as well if API is limited) */
+  const visibleClinics = clinics; 
 
   return (
     <div className="patient-dashboard">
@@ -114,46 +105,32 @@ export default function Clinics() {
           <div className="card">
             <div className="history-header">
               <h3 className="card-title">
-                {isFiltering ? "Therapy Centers" : "Nearby Clinics"}
+                Available Clinics
               </h3>
-
-              {!isFiltering && (
-                <button
-                  className="see-all"
-                  onClick={() => setShowAll(!showAll)}
-                >
-                  {showAll ? "See Less" : "See All"}
-                </button>
-              )}
             </div>
 
-            {visibleClinics.length === 0 ? (
+            {loading ? (
+               <p className="no-data">Loading clinics...</p>
+            ) : visibleClinics.length === 0 ? (
               <p className="no-data">No therapy centers found</p>
             ) : (
               visibleClinics.map((clinic, index) => (
                 <div key={index} className="clinic-card">
                   <div>
-                    <h4>{clinic.name}</h4>
-                    <p>{clinic.location}</p>
+                    <h4>{clinic.clinicName}</h4>
+                    <p>{clinic.address}</p>
                     <p className="timing">
-                      ⏰ {clinic.open} – {clinic.close}
+                      ⏰ {clinic.openingTime} – {clinic.closingTime}
                     </p>
-
-                    <div className="therapy-tags">
-                      {clinic.therapies.map((t, i) => (
-                        <span key={i}>{t}</span>
-                      ))}
-                    </div>
+                    <p className="doctor">Doctor: {clinic.doctor?.name}</p>
                   </div>
 
                   <button
                     className="btn-outline"
                     onClick={() => {
                       setSelectedClinic(clinic);
-                      setPatientName("");
-                      setTherapy("");
-                      setTherapist("");
-                      setSlot("");
+                      setAppointmentDate("");
+                      setAppointmentTime("");
                     }}
                   >
                     Book Appointment
@@ -171,41 +148,26 @@ export default function Clinics() {
           <div className="modal">
             <h3>Book Appointment</h3>
 
-            <p className="modal-clinic">{selectedClinic.name}</p>
+            <p className="modal-clinic">{selectedClinic.clinicName}</p>
             <p className="modal-time">
-              ⏰ {selectedClinic.open} – {selectedClinic.close}
+              ⏰ {selectedClinic.openingTime} – {selectedClinic.closingTime}
             </p>
 
+            <label className="text-xs text-gray-500 mb-1 block">Date</label>
             <input
-              type="text"
-              placeholder="Patient Name"
-              value={patientName}
-              onChange={(e) => setPatientName(e.target.value)}
+              type="date"
+              value={appointmentDate}
+              onChange={(e) => setAppointmentDate(e.target.value)}
+              className="mb-3"
             />
 
-            <select value={therapy} onChange={(e) => setTherapy(e.target.value)}>
-              <option value="">Select Therapy</option>
-              {selectedClinic.therapies.map((t, i) => (
-                <option key={i}>{t}</option>
-              ))}
-            </select>
-
-            <select
-              value={therapist}
-              onChange={(e) => setTherapist(e.target.value)}
-            >
-              <option value="">Select Therapist</option>
-              {selectedClinic.therapists.map((t, i) => (
-                <option key={i}>{t}</option>
-              ))}
-            </select>
-
-            <select value={slot} onChange={(e) => setSlot(e.target.value)}>
-              <option value="">Select Time Slot</option>
-              {selectedClinic.slots.map((s, i) => (
-                <option key={i}>{s}</option>
-              ))}
-            </select>
+            <label className="text-xs text-gray-500 mb-1 block">Time (HH:MM)</label>
+            <input
+              type="time"
+              value={appointmentTime}
+              onChange={(e) => setAppointmentTime(e.target.value)}
+              className="mb-3"
+            />
 
             <div className="modal-actions">
               <button
@@ -216,13 +178,10 @@ export default function Clinics() {
               </button>
               <button
                 className="btn-primary"
-                disabled={!patientName || !therapy || !therapist || !slot}
-                onClick={() => {
-                  setSelectedClinic(null);
-                  setBookingConfirmed(true);
-                }}
+                disabled={!appointmentDate || !appointmentTime || loading}
+                onClick={handleBooking}
               >
-                Confirm Booking
+                {loading ? "Booking..." : "Confirm Booking"}
               </button>
             </div>
           </div>

@@ -127,13 +127,103 @@
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .prescriptions-wrapper {
+    padding: 20px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
   .meta {
-    flex-direction: column;
-    gap: 6px;
+    flex-wrap: wrap;
   }
 
   .actions {
     flex-wrap: wrap;
+    gap: 8px;
   }
 }
+
+@media (max-width: 768px) {
+  .prescriptions-wrapper {
+    padding: 16px;
+  }
+
+  .page-title {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .prescription-card {
+    padding: 14px;
+    flex-direction: column;
+  }
+
+  .meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .meta span {
+    font-size: 12px;
+  }
+
+  .actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .actions button {
+    flex: 1;
+    min-width: 80px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .expanded-details {
+    margin-top: 14px;
+    padding: 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .prescriptions-wrapper {
+    padding: 12px;
+  }
+
+  .page-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .search-box {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .prescription-card {
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .meta span {
+    font-size: 11px;
+  }
+
+  .actions button {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .expanded-details {
+    margin-top: 12px;
+    padding: 10px;
+    font-size: 12px;
+  }

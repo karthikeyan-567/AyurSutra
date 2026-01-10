@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, Users, FileText, Calendar, Settings, LayoutGrid } from "lucide-react";
+import { Home, Users, FileText, Calendar, Settings, LayoutGrid, LogOut } from "lucide-react";
+import { auth } from "../services/api";
 
 export default function Sidebar({ onClose }) {
   const location = useLocation();
@@ -40,6 +41,19 @@ export default function Sidebar({ onClose }) {
           );
         })}
       </nav>
+
+      <div className="absolute bottom-8 left-6 right-6">
+        <button
+          onClick={() => {
+            auth.logout();
+            window.location.href = "/login";
+          }}
+          className="w-full flex items-center gap-3 px-4 py-2 text-red-600 hover:bg-red-50 rounded-xl transition"
+        >
+          <LogOut size={18} />
+          Logout
+        </button>
+      </div>
     </aside>
   );
 }

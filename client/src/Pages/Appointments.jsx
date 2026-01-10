@@ -1,22 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PatientSideBar from "../components/PatientSideBar";
 import PatientNavBar from "../components/PatientNavBar";
 import "../styles/Appointments.css";
+import { api } from "../services/api";
 
 export default function Appointments() {
+  const [appointments, setAppointments] = useState([]);
   const [showAll, setShowAll] = useState(false);
   const [showGuidance, setShowGuidance] = useState(false);
   const [liveMessageSent, setLiveMessageSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const historyData = [
-    { therapy: "Shirodhara", date: "Dec 01, 2025", doctor: "Dr. Mukil S" },
-    { therapy: "Udvartana", date: "Nov 25, 2025", doctor: "Dr. Mukil S" },
-    { therapy: "Abhyanga", date: "Nov 15, 2025", doctor: "Dr. Mukil S" },
-    { therapy: "Nasya", date: "Nov 05, 2025", doctor: "Dr. Mukil S" },
-    { therapy: "Pizhichil", date: "Oct 28, 2025", doctor: "Dr. Mukil S" },
-  ];
+  useEffect(() => {
+    fetchAppointments();
+  }, []);
 
-  const visibleHistory = showAll ? historyData : historyData.slice(0, 3);
+  const fetchAppointments = async () => {
+    setLoading(true);
+    try {
+      const data = await api.get('/appointments/my?role=patient');
+      setAppointments(data.appointments);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const visibleHistory = showAll ? appointments : appointments.slice(0, 3);
 
   return (
     <div className="patient-dashboard">
@@ -86,14 +97,21 @@ export default function Appointments() {
               </button>
             </div>
 
-            {visibleHistory.map((item, index) => (
-              <HistoryItem
-                key={index}
-                therapy={item.therapy}
-                date={item.date}
-                doctor={item.doctor}
-              />
-            ))}
+            {loading ? (
+              <p className="no-data">Loading appointments...</p>
+            ) : visibleHistory.length === 0 ? (
+              <p className="no-data">No appointments found</p>
+            ) : (
+              visibleHistory.map((item, index) => (
+                <HistoryItem
+                  key={index}
+                  therapy={item.clinic?.clinicName || "Therapy"}
+                  date={new Date(item.appointmentDate).toLocaleDateString()}
+                  time={item.appointmentTime}
+                  doctor={item.doctor?.name}
+                />
+              ))
+            )}
           </div>
         </div>
       </div>
@@ -148,12 +166,12 @@ export default function Appointments() {
 }
 
 /* HISTORY ITEM */
-function HistoryItem({ therapy, date, doctor }) {
+function HistoryItem({ therapy, date, time, doctor }) {
   return (
     <div className="history-item">
       <div>
         <strong>{therapy}</strong>
-        <p>{date}</p>
+        <p>{date} • {time}</p>
       </div>
       <span>{doctor}</span>
     </div>

@@ -1,8 +1,11 @@
+import { useState } from "react";
 import PatientSideBar from "../components/PatientSideBar";
 import PatientNavBar from "../components/PatientNavBar";
 import "../styles/insurance.css";
 
 export default function Insurance() {
+  const [showGuidelines, setShowGuidelines] = useState(false);
+
   return (
     <div className="patient-dashboard">
       <PatientSideBar />
@@ -78,10 +81,34 @@ export default function Insurance() {
           <div className="insurance-actions">
             <button className="btn-outline">View Policy Document</button>
             <button className="btn-primary">Upload Insurance Card</button>
-            <button className="btn-secondary">Contact Support</button>
+            <button className="btn-secondary" onClick={() => setShowGuidelines(true)}>Ayushman ID Guidelines</button>
           </div>
         </div>
       </div>
+
+      {/* GUIDELINES POPUP */}
+      {showGuidelines && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <button className="close-btn" onClick={() => setShowGuidelines(false)}>
+              ✖
+            </button>
+            
+            <h3 className="modal-title">Ayushman Bharat ID Guidelines</h3>
+            <div className="guidelines-list">
+              <p>🪪 <strong>Eligibility:</strong> Ensure you are listed in the SECC 2011 database or possess an RSBY card.</p>
+              <p>🏥 <strong>Network Hospitals:</strong> Treatments are cashless only at empaneled public and private hospitals.</p>
+              <p>📑 <strong>Documents:</strong> Carry your Ayushman Gold Card and Aadhaar Card/Ration Card during hospitalization.</p>
+              <p>💰 <strong>Coverage:</strong> Provides coverage up to ₹5 Lakh per family per year for secondary and tertiary care.</p>
+              <p>🚫 <strong>Exclusions:</strong> OPD expenses, cosmetic surgeries, and fertility treatments are usually not covered.</p>
+            </div>
+
+            <button className="btn-primary full-width" onClick={() => setShowGuidelines(false)}>
+              Understood
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
