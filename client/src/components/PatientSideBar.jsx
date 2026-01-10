@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   Home,
   Calendar,
@@ -8,7 +8,10 @@ import {
   TrendingUp,
   User,
   Settings,
+<<<<<<< HEAD
   Bed,
+=======
+>>>>>>> 5630ecea4a826863e9cb2894b315c65f86b429b0
   ShieldCheck,
   LogOut
 } from "lucide-react";
@@ -17,6 +20,17 @@ import "../styles/PatientSideBar.css";
 import { auth } from "../services/api";
 
 export default function PatientSideBar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Clear auth data (adjust keys as per your app)
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+
+    // Redirect to login page
+    navigate("/login");
+  };
+
   return (
     <aside className="patient-sidebar">
       <h2 className="sidebar-logo">AVARTANA CARE</h2>
@@ -45,7 +59,11 @@ export default function PatientSideBar() {
         <NavLink to="/progress">
           <TrendingUp size={20} /> Progress & Reports
         </NavLink>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 5630ecea4a826863e9cb2894b315c65f86b429b0
         <NavLink to="/insurance">
           <ShieldCheck size={20} /> Insurance
         </NavLink>
@@ -58,6 +76,7 @@ export default function PatientSideBar() {
           <Settings size={20} /> Settings
         </NavLink>
 
+<<<<<<< HEAD
         <button
           onClick={() => {
             auth.logout();
@@ -78,6 +97,10 @@ export default function PatientSideBar() {
             marginTop: 'auto'
           }}
         >
+=======
+        {/* Logout Button */}
+        <button className="logout-btn" onClick={handleLogout}>
+>>>>>>> 5630ecea4a826863e9cb2894b315c65f86b429b0
           <LogOut size={20} /> Logout
         </button>
       </nav>

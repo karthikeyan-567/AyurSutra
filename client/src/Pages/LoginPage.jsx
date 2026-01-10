@@ -18,12 +18,20 @@ export default function LoginPage() {
       const data = await auth.login(email, pass);
       localStorage.setItem("authRole", data.user.role.toLowerCase());
 
+<<<<<<< HEAD
       if (data.user.role === "ADMIN") navigate("/admin");
       else if (data.user.role === "DOCTOR") navigate("/dashboard");
       else navigate("/patient-dashboard");
     } catch (err) {
       setError(err.message);
     }
+=======
+    localStorage.setItem("authRole", role);
+
+    if (role === "admin") navigate("/admin");
+    else if (role === "doctor") navigate("/dashboard");
+    else navigate("/health-assessment");
+>>>>>>> 5630ecea4a826863e9cb2894b315c65f86b429b0
   };
 
   return (

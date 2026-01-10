@@ -12,7 +12,7 @@ import Progress from "./Pages/Progress";
 import SeatAvailability from "./Pages/SeatAvailability";
 import LandingPage from "./Pages/LandingPage";  
 import Insurance from "./Pages/insurance";
-
+import Questionnaire from "./Pages/Questionnaire";
 // Doctor / Admin Pages
 import DashboardPage from "./Pages/DashboardPage";
 import PatientPage from "./Pages/PatientPage";
@@ -102,7 +102,8 @@ export default function App() {
         <Route path="/progress" element={<Progress />} />
         <Route path="/seat-availability" element={<SeatAvailability />} />
         <Route path="/insurance" element={<Insurance />} />
-        
+        <Route path="/health-assessment" element={<Questionnaire />} />
+
       </Routes>
       </ThemeProvider>
 
